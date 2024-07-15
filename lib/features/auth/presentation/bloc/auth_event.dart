@@ -5,7 +5,7 @@ part 'auth_event.freezed.dart';
 @freezed
 sealed class AuthEvent with _$AuthEvent {
   const factory AuthEvent.signUp() = _loadingEvent;
-  const factory AuthEvent.login() = _loginEvent;
+  const factory AuthEvent.login({required String email,required String password}) = _loginEvent;
   const factory AuthEvent.isUserLoggedIn() = _signUpEvent;
 }
 

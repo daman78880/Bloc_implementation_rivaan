@@ -1,14 +1,21 @@
+import 'package:bloc_implementation_rivaan/features/auth/data/models/login_model.dart';
+import 'package:bloc_implementation_rivaan/features/auth/data/models/login_parsing_model.dart';
 import 'package:bloc_implementation_rivaan/features/auth/presentation/bloc/auth_event.dart';
 import 'package:bloc_implementation_rivaan/features/auth/presentation/bloc/auth_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../domain/usecases/user_login.dart';
+
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(const AuthState.initial()) {
-    // on<AuthEvent>((_, emit) => emit(const AuthState.loading()));
+  final UserLogin _userLogin;
+
+  AuthBloc({
+    required UserLogin userLogin,
+  })  : _userLogin = userLogin,
+        super(const AuthState.initial()) {
     on<AuthEvent>((events, emit) async {
       emit(const AuthState.loading());
       await events.map(
-        initial: (event) async => (),
         login: (event) async => await _onLoginUser(event, emit),
         signUp: (_) async => await _signUp(events, emit),
         isUserLoggedIn: (_) async => await _isUserLoggedIn(events, emit),
@@ -16,9 +23,28 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
-  _onLoginUser(event, Emitter<AuthState> emit) {}
+  _onLoginUser(event, Emitter<AuthState> emit) async {
+    final res = await _userLogin(
+      LoginParsingModel(
+        email: event.email,
+        password: event.password,
+      ),
+    );
+
+    res.fold(
+      (l) => emit(AuthState.failure(message: l.message)),
+      (r) => _emitAuthSuccess(r, emit),
+    );
+  }
 
   _signUp(AuthEvent events, Emitter<AuthState> emit) {}
 
   _isUserLoggedIn(AuthEvent events, Emitter<AuthState> emit) {}
+
+  void _emitAuthSuccess(
+    LoginModel user,
+    Emitter<AuthState> emit,
+  ) {
+    emit(AuthState.loginSuccessful(responseModel: user));
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:bloc_implementation_rivaan/features/auth/data/models/login_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_state.freezed.dart';
@@ -8,7 +9,7 @@ sealed class AuthState with _$AuthState {
 
   const factory AuthState.loading() = _loadingState;
 
-  const factory AuthState.loginSuccessful() = _loginState;
+  const factory AuthState.loginSuccessful({required LoginModel responseModel}) = _loginState;
 
   const factory AuthState.signUpSuccessful() = _signUpState;
 

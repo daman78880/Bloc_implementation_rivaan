@@ -1,3 +1,4 @@
+import 'package:bloc_implementation_rivaan/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/theme/app_theme.dart';
@@ -12,6 +13,9 @@ void main() async {
     providers: [
       BlocProvider(
         create: (_) => serviceLocator<AppUserCubit>(),
+      ),
+      BlocProvider(
+        create: (_) => serviceLocator<AuthBloc>(),
       ),
     ],
     child: const MyApp(),

@@ -20,7 +20,7 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loginSuccessful,
+    required TResult Function(LoginModel responseModel) loginSuccessful,
     required TResult Function() signUpSuccessful,
     required TResult Function(String message) failure,
   }) =>
@@ -29,7 +29,7 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? loginSuccessful,
+    TResult? Function(LoginModel responseModel)? loginSuccessful,
     TResult? Function()? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) =>
@@ -38,7 +38,7 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loginSuccessful,
+    TResult Function(LoginModel responseModel)? loginSuccessful,
     TResult Function()? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -131,7 +131,7 @@ class _$initialStateImpl implements _initialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loginSuccessful,
+    required TResult Function(LoginModel responseModel) loginSuccessful,
     required TResult Function() signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
@@ -143,7 +143,7 @@ class _$initialStateImpl implements _initialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? loginSuccessful,
+    TResult? Function(LoginModel responseModel)? loginSuccessful,
     TResult? Function()? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
@@ -155,7 +155,7 @@ class _$initialStateImpl implements _initialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loginSuccessful,
+    TResult Function(LoginModel responseModel)? loginSuccessful,
     TResult Function()? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -251,7 +251,7 @@ class _$loadingStateImpl implements _loadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loginSuccessful,
+    required TResult Function(LoginModel responseModel) loginSuccessful,
     required TResult Function() signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
@@ -263,7 +263,7 @@ class _$loadingStateImpl implements _loadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? loginSuccessful,
+    TResult? Function(LoginModel responseModel)? loginSuccessful,
     TResult? Function()? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
@@ -275,7 +275,7 @@ class _$loadingStateImpl implements _loadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loginSuccessful,
+    TResult Function(LoginModel responseModel)? loginSuccessful,
     TResult Function()? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -336,6 +336,10 @@ abstract class _$$loginStateImplCopyWith<$Res> {
   factory _$$loginStateImplCopyWith(
           _$loginStateImpl value, $Res Function(_$loginStateImpl) then) =
       __$$loginStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LoginModel responseModel});
+
+  $LoginModelCopyWith<$Res> get responseModel;
 }
 
 /// @nodoc
@@ -345,37 +349,70 @@ class __$$loginStateImplCopyWithImpl<$Res>
   __$$loginStateImplCopyWithImpl(
       _$loginStateImpl _value, $Res Function(_$loginStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? responseModel = null,
+  }) {
+    return _then(_$loginStateImpl(
+      responseModel: null == responseModel
+          ? _value.responseModel
+          : responseModel // ignore: cast_nullable_to_non_nullable
+              as LoginModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LoginModelCopyWith<$Res> get responseModel {
+    return $LoginModelCopyWith<$Res>(_value.responseModel, (value) {
+      return _then(_value.copyWith(responseModel: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$loginStateImpl implements _loginState {
-  const _$loginStateImpl();
+  const _$loginStateImpl({required this.responseModel});
+
+  @override
+  final LoginModel responseModel;
 
   @override
   String toString() {
-    return 'AuthState.loginSuccessful()';
+    return 'AuthState.loginSuccessful(responseModel: $responseModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$loginStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$loginStateImpl &&
+            (identical(other.responseModel, responseModel) ||
+                other.responseModel == responseModel));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, responseModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$loginStateImplCopyWith<_$loginStateImpl> get copyWith =>
+      __$$loginStateImplCopyWithImpl<_$loginStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loginSuccessful,
+    required TResult Function(LoginModel responseModel) loginSuccessful,
     required TResult Function() signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
-    return loginSuccessful();
+    return loginSuccessful(responseModel);
   }
 
   @override
@@ -383,11 +420,11 @@ class _$loginStateImpl implements _loginState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? loginSuccessful,
+    TResult? Function(LoginModel responseModel)? loginSuccessful,
     TResult? Function()? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
-    return loginSuccessful?.call();
+    return loginSuccessful?.call(responseModel);
   }
 
   @override
@@ -395,13 +432,13 @@ class _$loginStateImpl implements _loginState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loginSuccessful,
+    TResult Function(LoginModel responseModel)? loginSuccessful,
     TResult Function()? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (loginSuccessful != null) {
-      return loginSuccessful();
+      return loginSuccessful(responseModel);
     }
     return orElse();
   }
@@ -448,7 +485,13 @@ class _$loginStateImpl implements _loginState {
 }
 
 abstract class _loginState implements AuthState {
-  const factory _loginState() = _$loginStateImpl;
+  const factory _loginState({required final LoginModel responseModel}) =
+      _$loginStateImpl;
+
+  LoginModel get responseModel;
+  @JsonKey(ignore: true)
+  _$$loginStateImplCopyWith<_$loginStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -491,7 +534,7 @@ class _$signUpStateImpl implements _signUpState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loginSuccessful,
+    required TResult Function(LoginModel responseModel) loginSuccessful,
     required TResult Function() signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
@@ -503,7 +546,7 @@ class _$signUpStateImpl implements _signUpState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? loginSuccessful,
+    TResult? Function(LoginModel responseModel)? loginSuccessful,
     TResult? Function()? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
@@ -515,7 +558,7 @@ class _$signUpStateImpl implements _signUpState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loginSuccessful,
+    TResult Function(LoginModel responseModel)? loginSuccessful,
     TResult Function()? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -637,7 +680,7 @@ class _$failureStateImpl implements _failureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loginSuccessful,
+    required TResult Function(LoginModel responseModel) loginSuccessful,
     required TResult Function() signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
@@ -649,7 +692,7 @@ class _$failureStateImpl implements _failureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? loginSuccessful,
+    TResult? Function(LoginModel responseModel)? loginSuccessful,
     TResult? Function()? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
@@ -661,7 +704,7 @@ class _$failureStateImpl implements _failureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loginSuccessful,
+    TResult Function(LoginModel responseModel)? loginSuccessful,
     TResult Function()? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),

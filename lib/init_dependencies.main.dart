@@ -5,15 +5,12 @@ final serviceLocator = GetIt.instance;
 Future<void> initDependencies() async {
   _initAuth();
   _initBlog();
-
-  final supabase = await Supabase.initialize(
-    url: AppSecrets.supabaseUrl,
-    anonKey: AppSecrets.supabaseAnonKey,
-  );
+  //Dio
+  serviceLocator.registerLazySingleton<DioClient>(() => DioClient(serviceLocator<Dio>()));
+  serviceLocator.registerLazySingleton<Dio>(() => Dio());
 
   Hive.defaultDirectory = (await getApplicationDocumentsDirectory()).path;
 
-  serviceLocator.registerLazySingleton(() => supabase.client);
 
   serviceLocator.registerLazySingleton(
     () => Hive.box(name: 'blogs'),
@@ -34,11 +31,35 @@ Future<void> initDependencies() async {
 
 void _initAuth() {
   // Datasource
+  serviceLocator
+    ..registerFactory<AuthRemoteDataSource>(
+          () => AuthRemoteDataSourceImpl(
+        serviceLocator(),
+      ),
+    )
+  // Repository
+    ..registerFactory<AuthRepository>(
+          () => AuthRepositoryImpl(
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    )
+  // Usecases
 
+    ..registerFactory(
+          () => UserLogin(
+        serviceLocator(),
+      ),
+    )
 
+  // Bloc
+    ..registerLazySingleton(
+          () => AuthBloc(
+        userLogin: serviceLocator(),
+      ),
+    );
 }
 
 void _initBlog() {
   // Datasource
-
 }
