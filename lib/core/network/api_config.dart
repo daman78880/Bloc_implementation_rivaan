@@ -8,6 +8,7 @@ class ApiConfig {
   static const Duration connectionTimeout = Duration(milliseconds: 15000);
 
   static const String login = '/api/login';
+  static const String signUp = '/api/register';
   static const header = {
     'Authorization': 'Bearer $token',
     'content-Type': 'application/json',

@@ -89,14 +89,15 @@
 //   }
 // }
 
-
 import 'package:bloc_implementation_rivaan/core/error/failures.dart';
 import 'package:bloc_implementation_rivaan/features/auth/data/models/login_model.dart';
 import 'package:bloc_implementation_rivaan/features/auth/data/models/login_parsing_model.dart';
+import 'package:dio/dio.dart';
 import 'package:fpdart/src/either.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/network/connection_checker.dart';
+import '../../../../core/network/dio_exception.dart';
 import '../../domain/repository/auth_repository.dart';
 import '../datasources/auth_remote_data_source.dart';
 
@@ -104,8 +105,10 @@ class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
   final ConnectionChecker connectionChecker;
 
-  AuthRepositoryImpl(this.remoteDataSource,
-      this.connectionChecker,);
+  AuthRepositoryImpl(
+    this.remoteDataSource,
+    this.connectionChecker,
+  );
 
   @override
   Future<Either<Failure, LoginModel>> loginWithEmailPassword(
@@ -114,18 +117,36 @@ class AuthRepositoryImpl implements AuthRepository {
       if (!await (connectionChecker.isConnected)) {
         return left(Failure(Constants.noConnectionErrorMessage));
       }
-      final user = await remoteDataSource.loginWithEmailPassword(
-          params: params
-      );
+      final user =
+          await remoteDataSource.loginWithEmailPassword(params: params);
       return right(user);
+    } catch (e) {
+      if (e is DioException) {
+        final errorMessage = DioExceptions.fromDioError(e).toString();
+        return left(Failure(errorMessage));
+      } else {
+        return left(Failure(e.toString()));
+      }
     }
-    on ServerException catch (e) {
-      return left(Failure(e.message));
+  }
+
+  @override
+  Future<Either<Failure, LoginModel>> signUpWithEmailPassword(
+      {required LoginParsingModel params}) async {
+    try {
+      if (!await (connectionChecker.isConnected)) {
+        return left(Failure(Constants.noConnectionErrorMessage));
+      }
+      final user =
+          await remoteDataSource.signUpWithEmailPassword(params: params);
+      return right(user);
+    } catch (e) {
+      if (e is DioException) {
+        final errorMessage = DioExceptions.fromDioError(e).toString();
+        return left(Failure(errorMessage));
+      } else {
+        return left(Failure(e.toString()));
+      }
     }
   }
 }
-
-
-
-
-
