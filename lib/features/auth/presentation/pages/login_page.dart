@@ -42,12 +42,8 @@ class _LoginPageState extends State<LoginPage> {
         listener: (context, state) {
           state.maybeWhen(
             loginSuccessful: (responseModel) {
-              showSnackBar(context, 'User login successfull');
-              // Navigator.pushAndRemoveUntil(
-              //   context,
-              //   BlogPage.route(),
-              //       (route) => false,
-              // );
+              showSnackBar(context, 'User login successfully');
+            context.goNamed(AppRouter.home);
             },
             failure: (message) {
               showSnackBar(context, message);

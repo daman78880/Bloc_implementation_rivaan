@@ -6,11 +6,11 @@ Future<void> initDependencies() async {
   _initAuth();
   _initBlog();
   //Dio
-  serviceLocator.registerLazySingleton<DioClient>(() => DioClient(serviceLocator<Dio>()));
+  serviceLocator
+      .registerLazySingleton<DioClient>(() => DioClient(serviceLocator<Dio>()));
   serviceLocator.registerLazySingleton<Dio>(() => Dio());
 
   Hive.defaultDirectory = (await getApplicationDocumentsDirectory()).path;
-
 
   serviceLocator.registerLazySingleton(
     () => Hive.box(name: 'blogs'),
@@ -33,30 +33,31 @@ void _initAuth() {
   // Datasource
   serviceLocator
     ..registerFactory<AuthRemoteDataSource>(
-          () => AuthRemoteDataSourceImpl(
+      () => AuthRemoteDataSourceImpl(
         serviceLocator(),
       ),
     )
-  // Repository
+    // Repository
     ..registerFactory<AuthRepository>(
-          () => AuthRepositoryImpl(
+      () => AuthRepositoryImpl(
         serviceLocator(),
         serviceLocator(),
       ),
     )
-  // Usecases
+    // Usecases
 
     ..registerFactory(
-          () => UserLogin(
+      () => UserLogin(
         serviceLocator(),
       ),
     )
+    ..registerFactory(
+      () => UserSignup(serviceLocator()),
+    )
 
-  // Bloc
+    // Bloc
     ..registerLazySingleton(
-          () => AuthBloc(
-        userLogin: serviceLocator(),
-      ),
+      () => AuthBloc(userLogin: serviceLocator(), userSignup: serviceLocator()),
     );
 }
 

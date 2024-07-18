@@ -11,7 +11,7 @@ sealed class AuthState with _$AuthState {
 
   const factory AuthState.loginSuccessful({required LoginModel responseModel}) = _loginState;
 
-  const factory AuthState.signUpSuccessful() = _signUpState;
+  const factory AuthState.signUpSuccessful({required LoginModel responseModel}) = _signUpState;
 
   const factory AuthState.failure({required String message}) = _failureState;
 }

@@ -121,10 +121,10 @@ class AuthRepositoryImpl implements AuthRepository {
           await remoteDataSource.loginWithEmailPassword(params: params);
       return right(user);
     } catch (e) {
-      if (e is DioException) {
-        final errorMessage = DioExceptions.fromDioError(e).toString();
-        return left(Failure(errorMessage));
-      } else {
+       if( e is ServerException ){
+        return left(Failure(e.message.toString()));
+      }
+      else {
         return left(Failure(e.toString()));
       }
     }
@@ -144,7 +144,10 @@ class AuthRepositoryImpl implements AuthRepository {
       if (e is DioException) {
         final errorMessage = DioExceptions.fromDioError(e).toString();
         return left(Failure(errorMessage));
-      } else {
+      }else if( e is ServerException ){
+        return left(Failure(e.message.toString()));
+      }
+      else {
         return left(Failure(e.toString()));
       }
     }

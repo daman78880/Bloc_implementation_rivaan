@@ -35,16 +35,16 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       } else {
         throw ServerException(response.statusMessage ?? '');
       }
-      // if (response.statusCode.success) {
-      //   return LoginModel.fromJson(response.data);
-      // } else {
-      //   throw DioExceptions;
-      // }
     } catch (e) {
-      throw ServerException(e.toString());
+      if (e is DioException) {
+        final errorMessage = DioExceptions.fromDioError(e).toString();
+        throw ServerException(errorMessage);
+      }else{
+        throw ServerException(e.toString());
+      }
+      rethrow;
+      // throw ServerException(e.toString());
     }
-
-
   }
 
   @override
@@ -62,7 +62,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         throw ServerException(response.statusMessage ?? '');
       }
     } catch (e) {
-      throw ServerException(e.toString());
+      rethrow;
+      // throw ServerException(e.toString());
     }
   }
 

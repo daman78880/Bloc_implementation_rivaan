@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart' show DioException, DioExceptionType;
+import 'package:dio/dio.dart' show DioException, DioExceptionType , Response;
 
 import '../common/app_string.dart';
 
@@ -19,7 +19,7 @@ class DioExceptions implements Exception {
       case DioExceptionType.badResponse:
         message = _handleError(
           dioException.response?.statusCode,
-          dioException.response?.data,
+          dioException.response,
         );
         break;
       case DioExceptionType.sendTimeout:
@@ -34,10 +34,14 @@ class DioExceptions implements Exception {
     }
   }
 
-  String _handleError(int? statusCode, dynamic error) {
+  String _handleError(int? statusCode, Response<dynamic>? error) {
     switch (statusCode) {
       case 400:
-        return AppString.badRequest;
+        String? errorMsg;
+        if(error?.data!=null && error?.data is Map && (error?.data as Map).containsKey('error')){
+          errorMsg=(error!.data as Map)['error'];
+        }
+        return errorMsg??AppString.badRequest;
       case 401:
         return AppString.unauthorized;
       case 403:

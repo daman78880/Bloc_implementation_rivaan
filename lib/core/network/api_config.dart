@@ -9,6 +9,7 @@ class ApiConfig {
 
   static const String login = '/api/login';
   static const String signUp = '/api/register';
+  static const String userList = '/users';
   static const header = {
     'Authorization': 'Bearer $token',
     'content-Type': 'application/json',

@@ -21,7 +21,7 @@ mixin _$AuthState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(LoginModel responseModel) loginSuccessful,
-    required TResult Function() signUpSuccessful,
+    required TResult Function(LoginModel responseModel) signUpSuccessful,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ mixin _$AuthState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(LoginModel responseModel)? loginSuccessful,
-    TResult? Function()? signUpSuccessful,
+    TResult? Function(LoginModel responseModel)? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ mixin _$AuthState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(LoginModel responseModel)? loginSuccessful,
-    TResult Function()? signUpSuccessful,
+    TResult Function(LoginModel responseModel)? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -132,7 +132,7 @@ class _$initialStateImpl implements _initialState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(LoginModel responseModel) loginSuccessful,
-    required TResult Function() signUpSuccessful,
+    required TResult Function(LoginModel responseModel) signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -144,7 +144,7 @@ class _$initialStateImpl implements _initialState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(LoginModel responseModel)? loginSuccessful,
-    TResult? Function()? signUpSuccessful,
+    TResult? Function(LoginModel responseModel)? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -156,7 +156,7 @@ class _$initialStateImpl implements _initialState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(LoginModel responseModel)? loginSuccessful,
-    TResult Function()? signUpSuccessful,
+    TResult Function(LoginModel responseModel)? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -252,7 +252,7 @@ class _$loadingStateImpl implements _loadingState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(LoginModel responseModel) loginSuccessful,
-    required TResult Function() signUpSuccessful,
+    required TResult Function(LoginModel responseModel) signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -264,7 +264,7 @@ class _$loadingStateImpl implements _loadingState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(LoginModel responseModel)? loginSuccessful,
-    TResult? Function()? signUpSuccessful,
+    TResult? Function(LoginModel responseModel)? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -276,7 +276,7 @@ class _$loadingStateImpl implements _loadingState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(LoginModel responseModel)? loginSuccessful,
-    TResult Function()? signUpSuccessful,
+    TResult Function(LoginModel responseModel)? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -409,7 +409,7 @@ class _$loginStateImpl implements _loginState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(LoginModel responseModel) loginSuccessful,
-    required TResult Function() signUpSuccessful,
+    required TResult Function(LoginModel responseModel) signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
     return loginSuccessful(responseModel);
@@ -421,7 +421,7 @@ class _$loginStateImpl implements _loginState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(LoginModel responseModel)? loginSuccessful,
-    TResult? Function()? signUpSuccessful,
+    TResult? Function(LoginModel responseModel)? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
     return loginSuccessful?.call(responseModel);
@@ -433,7 +433,7 @@ class _$loginStateImpl implements _loginState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(LoginModel responseModel)? loginSuccessful,
-    TResult Function()? signUpSuccessful,
+    TResult Function(LoginModel responseModel)? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -499,6 +499,10 @@ abstract class _$$signUpStateImplCopyWith<$Res> {
   factory _$$signUpStateImplCopyWith(
           _$signUpStateImpl value, $Res Function(_$signUpStateImpl) then) =
       __$$signUpStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LoginModel responseModel});
+
+  $LoginModelCopyWith<$Res> get responseModel;
 }
 
 /// @nodoc
@@ -508,26 +512,59 @@ class __$$signUpStateImplCopyWithImpl<$Res>
   __$$signUpStateImplCopyWithImpl(
       _$signUpStateImpl _value, $Res Function(_$signUpStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? responseModel = null,
+  }) {
+    return _then(_$signUpStateImpl(
+      responseModel: null == responseModel
+          ? _value.responseModel
+          : responseModel // ignore: cast_nullable_to_non_nullable
+              as LoginModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LoginModelCopyWith<$Res> get responseModel {
+    return $LoginModelCopyWith<$Res>(_value.responseModel, (value) {
+      return _then(_value.copyWith(responseModel: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$signUpStateImpl implements _signUpState {
-  const _$signUpStateImpl();
+  const _$signUpStateImpl({required this.responseModel});
+
+  @override
+  final LoginModel responseModel;
 
   @override
   String toString() {
-    return 'AuthState.signUpSuccessful()';
+    return 'AuthState.signUpSuccessful(responseModel: $responseModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$signUpStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$signUpStateImpl &&
+            (identical(other.responseModel, responseModel) ||
+                other.responseModel == responseModel));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, responseModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$signUpStateImplCopyWith<_$signUpStateImpl> get copyWith =>
+      __$$signUpStateImplCopyWithImpl<_$signUpStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -535,10 +572,10 @@ class _$signUpStateImpl implements _signUpState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(LoginModel responseModel) loginSuccessful,
-    required TResult Function() signUpSuccessful,
+    required TResult Function(LoginModel responseModel) signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
-    return signUpSuccessful();
+    return signUpSuccessful(responseModel);
   }
 
   @override
@@ -547,10 +584,10 @@ class _$signUpStateImpl implements _signUpState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(LoginModel responseModel)? loginSuccessful,
-    TResult? Function()? signUpSuccessful,
+    TResult? Function(LoginModel responseModel)? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
-    return signUpSuccessful?.call();
+    return signUpSuccessful?.call(responseModel);
   }
 
   @override
@@ -559,12 +596,12 @@ class _$signUpStateImpl implements _signUpState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(LoginModel responseModel)? loginSuccessful,
-    TResult Function()? signUpSuccessful,
+    TResult Function(LoginModel responseModel)? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (signUpSuccessful != null) {
-      return signUpSuccessful();
+      return signUpSuccessful(responseModel);
     }
     return orElse();
   }
@@ -611,7 +648,13 @@ class _$signUpStateImpl implements _signUpState {
 }
 
 abstract class _signUpState implements AuthState {
-  const factory _signUpState() = _$signUpStateImpl;
+  const factory _signUpState({required final LoginModel responseModel}) =
+      _$signUpStateImpl;
+
+  LoginModel get responseModel;
+  @JsonKey(ignore: true)
+  _$$signUpStateImplCopyWith<_$signUpStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -681,7 +724,7 @@ class _$failureStateImpl implements _failureState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(LoginModel responseModel) loginSuccessful,
-    required TResult Function() signUpSuccessful,
+    required TResult Function(LoginModel responseModel) signUpSuccessful,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -693,7 +736,7 @@ class _$failureStateImpl implements _failureState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(LoginModel responseModel)? loginSuccessful,
-    TResult? Function()? signUpSuccessful,
+    TResult? Function(LoginModel responseModel)? signUpSuccessful,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -705,7 +748,7 @@ class _$failureStateImpl implements _failureState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(LoginModel responseModel)? loginSuccessful,
-    TResult Function()? signUpSuccessful,
+    TResult Function(LoginModel responseModel)? signUpSuccessful,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {

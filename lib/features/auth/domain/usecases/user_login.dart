@@ -8,7 +8,6 @@ import '../repository/auth_repository.dart';
 
 class UserLogin implements UseCase<LoginModel, LoginParsingModel> {
   final AuthRepository authRepository;
-
   const UserLogin(this.authRepository);
 
   @override

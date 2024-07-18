@@ -9,7 +9,8 @@ class AppTheme {
   static ThemeData lightAppTheme = ThemeData(
     scaffoldBackgroundColor: AppPallete.backgroundColor,
     appBarTheme:
-        const AppBarTheme(color: AppPallete.backgroundColor, centerTitle: true),
+        const AppBarTheme(color: AppPallete.backgroundColor, centerTitle: true,titleTextStyle:TextStyle(
+            fontSize: 24.0, fontWeight: FontWeight.w400, color: Colors.white) ),
     dialogTheme: const DialogTheme(
       shape: RoundedRectangleBorder(
         side: BorderSide(color: AppPallete.backgroundColor, width: 1.0),
@@ -76,6 +77,7 @@ class AppTheme {
       displayLarge: TextStyle(
           fontSize: 50.0, fontWeight: FontWeight.w700, color: Colors.white),
     ),
+
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:bloc_implementation_rivaan/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/theme/app_theme.dart';
 import 'core/common/cubits/app_user/app_user_cubit.dart';
 import 'core/router/app_router.dart';
@@ -38,13 +39,20 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'Blog App',
-      themeMode: ThemeMode.dark,
-      darkTheme: AppTheme.lightAppTheme,
-      theme: AppTheme.lightAppTheme,
-      routerConfig: AppRouter.router,
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+    builder: (context, child) {
+      return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'Blog App',
+        themeMode: ThemeMode.dark,
+        darkTheme: AppTheme.lightAppTheme,
+        theme: AppTheme.lightAppTheme,
+        routerConfig: AppRouter.router,
+      );
+    }
     );
   }
 }
