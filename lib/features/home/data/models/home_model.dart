@@ -11,6 +11,8 @@ class HomeModel with _$HomeModel {
     @Default(10) int per_page,
     @Default(0) int total,
     @Default(0) int total_pages,
+    @Default([]) List<Data> data,
+    Support? support
   }) = _HomeModel;
 
   factory HomeModel.fromJson(Map<String, Object?> json) =>

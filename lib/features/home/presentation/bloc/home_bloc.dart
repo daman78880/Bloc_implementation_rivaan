@@ -1,9 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../domain/usercases/home_use_case.dart';
 import 'home_event.dart';
 import 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(const HomeState.initial()) {
+  HomeUseCase _homeUserCase;
+
+  HomeBloc({required HomeUseCase homeUserCase})
+      : _homeUserCase = homeUserCase,
+        super(const HomeState.initial()) {
     on<HomeEvent>((event, emit) {
       emit(const HomeState.loadLing());
       event.map(
@@ -12,5 +17,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
   }
 
-  _onGetUserList(event, Emitter<HomeState> emit) {}
+  _onGetUserList(event, Emitter<HomeState> emit) async {
+    final res = await _homeUserCase.call(event.pageNo);
+    if (!emit.isDone) {
+      res.fold((l) => emit(HomeState.failure(msg: l.message)),
+              (r) => emit(HomeState.listLoaded(data: r.data)));
+    }
+  }
 }

@@ -37,9 +37,20 @@ void _initAuth() {
         serviceLocator(),
       ),
     )
+    ..registerFactory<HomeRemoteDataSource>(
+      () => HomeRemoteDataSourceImpl(
+        serviceLocator(),
+      ),
+    )
     // Repository
     ..registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory<HomeRepository>(
+      () => HomeRepositoryImpl(
         serviceLocator(),
         serviceLocator(),
       ),
@@ -54,10 +65,16 @@ void _initAuth() {
     ..registerFactory(
       () => UserSignup(serviceLocator()),
     )
+    ..registerFactory(
+      () => HomeUseCase(serviceLocator()),
+    )
 
     // Bloc
     ..registerLazySingleton(
       () => AuthBloc(userLogin: serviceLocator(), userSignup: serviceLocator()),
+    )
+    ..registerLazySingleton(
+      () => HomeBloc(homeUserCase: serviceLocator()),
     );
 }
 

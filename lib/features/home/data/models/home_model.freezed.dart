@@ -24,6 +24,8 @@ mixin _$HomeModel {
   int get per_page => throw _privateConstructorUsedError;
   int get total => throw _privateConstructorUsedError;
   int get total_pages => throw _privateConstructorUsedError;
+  List<Data> get data => throw _privateConstructorUsedError;
+  Support? get support => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,15 @@ abstract class $HomeModelCopyWith<$Res> {
   factory $HomeModelCopyWith(HomeModel value, $Res Function(HomeModel) then) =
       _$HomeModelCopyWithImpl<$Res, HomeModel>;
   @useResult
-  $Res call({int page, int per_page, int total, int total_pages});
+  $Res call(
+      {int page,
+      int per_page,
+      int total,
+      int total_pages,
+      List<Data> data,
+      Support? support});
+
+  $SupportCopyWith<$Res>? get support;
 }
 
 /// @nodoc
@@ -56,6 +66,8 @@ class _$HomeModelCopyWithImpl<$Res, $Val extends HomeModel>
     Object? per_page = null,
     Object? total = null,
     Object? total_pages = null,
+    Object? data = null,
+    Object? support = freezed,
   }) {
     return _then(_value.copyWith(
       page: null == page
@@ -74,7 +86,27 @@ class _$HomeModelCopyWithImpl<$Res, $Val extends HomeModel>
           ? _value.total_pages
           : total_pages // ignore: cast_nullable_to_non_nullable
               as int,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Data>,
+      support: freezed == support
+          ? _value.support
+          : support // ignore: cast_nullable_to_non_nullable
+              as Support?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SupportCopyWith<$Res>? get support {
+    if (_value.support == null) {
+      return null;
+    }
+
+    return $SupportCopyWith<$Res>(_value.support!, (value) {
+      return _then(_value.copyWith(support: value) as $Val);
+    });
   }
 }
 
@@ -86,7 +118,16 @@ abstract class _$$HomeModelImplCopyWith<$Res>
       __$$HomeModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int page, int per_page, int total, int total_pages});
+  $Res call(
+      {int page,
+      int per_page,
+      int total,
+      int total_pages,
+      List<Data> data,
+      Support? support});
+
+  @override
+  $SupportCopyWith<$Res>? get support;
 }
 
 /// @nodoc
@@ -104,6 +145,8 @@ class __$$HomeModelImplCopyWithImpl<$Res>
     Object? per_page = null,
     Object? total = null,
     Object? total_pages = null,
+    Object? data = null,
+    Object? support = freezed,
   }) {
     return _then(_$HomeModelImpl(
       page: null == page
@@ -122,6 +165,14 @@ class __$$HomeModelImplCopyWithImpl<$Res>
           ? _value.total_pages
           : total_pages // ignore: cast_nullable_to_non_nullable
               as int,
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Data>,
+      support: freezed == support
+          ? _value.support
+          : support // ignore: cast_nullable_to_non_nullable
+              as Support?,
     ));
   }
 }
@@ -133,7 +184,10 @@ class _$HomeModelImpl implements _HomeModel {
       {this.page = 0,
       this.per_page = 10,
       this.total = 0,
-      this.total_pages = 0});
+      this.total_pages = 0,
+      final List<Data> data = const [],
+      this.support})
+      : _data = data;
 
   factory _$HomeModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeModelImplFromJson(json);
@@ -150,10 +204,21 @@ class _$HomeModelImpl implements _HomeModel {
   @override
   @JsonKey()
   final int total_pages;
+  final List<Data> _data;
+  @override
+  @JsonKey()
+  List<Data> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  final Support? support;
 
   @override
   String toString() {
-    return 'HomeModel(page: $page, per_page: $per_page, total: $total, total_pages: $total_pages)';
+    return 'HomeModel(page: $page, per_page: $per_page, total: $total, total_pages: $total_pages, data: $data, support: $support)';
   }
 
   @override
@@ -166,13 +231,15 @@ class _$HomeModelImpl implements _HomeModel {
                 other.per_page == per_page) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.total_pages, total_pages) ||
-                other.total_pages == total_pages));
+                other.total_pages == total_pages) &&
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.support, support) || other.support == support));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, page, per_page, total, total_pages);
+  int get hashCode => Object.hash(runtimeType, page, per_page, total,
+      total_pages, const DeepCollectionEquality().hash(_data), support);
 
   @JsonKey(ignore: true)
   @override
@@ -193,7 +260,9 @@ abstract class _HomeModel implements HomeModel {
       {final int page,
       final int per_page,
       final int total,
-      final int total_pages}) = _$HomeModelImpl;
+      final int total_pages,
+      final List<Data> data,
+      final Support? support}) = _$HomeModelImpl;
 
   factory _HomeModel.fromJson(Map<String, dynamic> json) =
       _$HomeModelImpl.fromJson;
@@ -206,6 +275,10 @@ abstract class _HomeModel implements HomeModel {
   int get total;
   @override
   int get total_pages;
+  @override
+  List<Data> get data;
+  @override
+  Support? get support;
   @override
   @JsonKey(ignore: true)
   _$$HomeModelImplCopyWith<_$HomeModelImpl> get copyWith =>

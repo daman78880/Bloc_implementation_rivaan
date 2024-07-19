@@ -13,7 +13,7 @@ class AppRouter {
   static const String signUp = '/signUpPage';
   static const String home = '/HomePage';
   static final GoRouter router = GoRouter(
-    initialLocation: splash,
+    initialLocation: home,
     errorBuilder: (context, state) {
       return const Scaffold(
         body: Text('No route found'),

@@ -12,6 +12,13 @@ _$HomeModelImpl _$$HomeModelImplFromJson(Map<String, dynamic> json) =>
       per_page: (json['per_page'] as num?)?.toInt() ?? 10,
       total: (json['total'] as num?)?.toInt() ?? 0,
       total_pages: (json['total_pages'] as num?)?.toInt() ?? 0,
+      data: (json['data'] as List<dynamic>?)
+              ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      support: json['support'] == null
+          ? null
+          : Support.fromJson(json['support'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$HomeModelImplToJson(_$HomeModelImpl instance) =>
@@ -20,6 +27,8 @@ Map<String, dynamic> _$$HomeModelImplToJson(_$HomeModelImpl instance) =>
       'per_page': instance.per_page,
       'total': instance.total,
       'total_pages': instance.total_pages,
+      'data': instance.data,
+      'support': instance.support,
     };
 
 _$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(

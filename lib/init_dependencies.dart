@@ -1,4 +1,7 @@
 import 'package:bloc_implementation_rivaan/features/auth/domain/usecases/user_signup.dart';
+import 'package:bloc_implementation_rivaan/features/home/domain/repository/home_repository.dart';
+import 'package:bloc_implementation_rivaan/features/home/domain/usercases/home_use_case.dart';
+import 'package:bloc_implementation_rivaan/features/home/presentation/bloc/home_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
@@ -13,4 +16,6 @@ import 'features/auth/data/repositories/auth_repository_impl.dart';
 import 'features/auth/domain/repository/auth_repository.dart';
 import 'features/auth/domain/usecases/user_login.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/home/data/datasource/home_remote_data_source.dart';
+import 'features/home/data/repositories/home_repository_impl.dart';
 part 'init_dependencies.main.dart';

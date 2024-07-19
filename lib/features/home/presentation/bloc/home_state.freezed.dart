@@ -20,21 +20,24 @@ mixin _$HomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadLing,
-    required TResult Function() listLoaded,
+    required TResult Function(String msg) failure,
+    required TResult Function(List<Data> data) listLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadLing,
-    TResult? Function()? listLoaded,
+    TResult? Function(String msg)? failure,
+    TResult? Function(List<Data> data)? listLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadLing,
-    TResult Function()? listLoaded,
+    TResult Function(String msg)? failure,
+    TResult Function(List<Data> data)? listLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,6 +45,7 @@ mixin _$HomeState {
   TResult map<TResult extends Object?>({
     required TResult Function(_initialStatet value) initial,
     required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$HomeState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initialStatet value)? initial,
     TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$HomeState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialStatet value)? initial,
     TResult Function(_loadingState value)? loadLing,
+    TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
     required TResult orElse(),
   }) =>
@@ -119,7 +125,8 @@ class _$initialStatetImpl implements _initialStatet {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadLing,
-    required TResult Function() listLoaded,
+    required TResult Function(String msg) failure,
+    required TResult Function(List<Data> data) listLoaded,
   }) {
     return initial();
   }
@@ -129,7 +136,8 @@ class _$initialStatetImpl implements _initialStatet {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadLing,
-    TResult? Function()? listLoaded,
+    TResult? Function(String msg)? failure,
+    TResult? Function(List<Data> data)? listLoaded,
   }) {
     return initial?.call();
   }
@@ -139,7 +147,8 @@ class _$initialStatetImpl implements _initialStatet {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadLing,
-    TResult Function()? listLoaded,
+    TResult Function(String msg)? failure,
+    TResult Function(List<Data> data)? listLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -153,6 +162,7 @@ class _$initialStatetImpl implements _initialStatet {
   TResult map<TResult extends Object?>({
     required TResult Function(_initialStatet value) initial,
     required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
   }) {
     return initial(this);
@@ -163,6 +173,7 @@ class _$initialStatetImpl implements _initialStatet {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initialStatet value)? initial,
     TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
   }) {
     return initial?.call(this);
@@ -173,6 +184,7 @@ class _$initialStatetImpl implements _initialStatet {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialStatet value)? initial,
     TResult Function(_loadingState value)? loadLing,
+    TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
     required TResult orElse(),
   }) {
@@ -227,7 +239,8 @@ class _$loadingStateImpl implements _loadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadLing,
-    required TResult Function() listLoaded,
+    required TResult Function(String msg) failure,
+    required TResult Function(List<Data> data) listLoaded,
   }) {
     return loadLing();
   }
@@ -237,7 +250,8 @@ class _$loadingStateImpl implements _loadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadLing,
-    TResult? Function()? listLoaded,
+    TResult? Function(String msg)? failure,
+    TResult? Function(List<Data> data)? listLoaded,
   }) {
     return loadLing?.call();
   }
@@ -247,7 +261,8 @@ class _$loadingStateImpl implements _loadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadLing,
-    TResult Function()? listLoaded,
+    TResult Function(String msg)? failure,
+    TResult Function(List<Data> data)? listLoaded,
     required TResult orElse(),
   }) {
     if (loadLing != null) {
@@ -261,6 +276,7 @@ class _$loadingStateImpl implements _loadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_initialStatet value) initial,
     required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
   }) {
     return loadLing(this);
@@ -271,6 +287,7 @@ class _$loadingStateImpl implements _loadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initialStatet value)? initial,
     TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
   }) {
     return loadLing?.call(this);
@@ -281,6 +298,7 @@ class _$loadingStateImpl implements _loadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialStatet value)? initial,
     TResult Function(_loadingState value)? loadLing,
+    TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
     required TResult orElse(),
   }) {
@@ -296,48 +314,75 @@ abstract class _loadingState implements HomeState {
 }
 
 /// @nodoc
-abstract class _$$listLoadedStateImplCopyWith<$Res> {
-  factory _$$listLoadedStateImplCopyWith(_$listLoadedStateImpl value,
-          $Res Function(_$listLoadedStateImpl) then) =
-      __$$listLoadedStateImplCopyWithImpl<$Res>;
+abstract class _$$failureStateImplCopyWith<$Res> {
+  factory _$$failureStateImplCopyWith(
+          _$failureStateImpl value, $Res Function(_$failureStateImpl) then) =
+      __$$failureStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String msg});
 }
 
 /// @nodoc
-class __$$listLoadedStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$listLoadedStateImpl>
-    implements _$$listLoadedStateImplCopyWith<$Res> {
-  __$$listLoadedStateImplCopyWithImpl(
-      _$listLoadedStateImpl _value, $Res Function(_$listLoadedStateImpl) _then)
+class __$$failureStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$failureStateImpl>
+    implements _$$failureStateImplCopyWith<$Res> {
+  __$$failureStateImplCopyWithImpl(
+      _$failureStateImpl _value, $Res Function(_$failureStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = null,
+  }) {
+    return _then(_$failureStateImpl(
+      msg: null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$listLoadedStateImpl implements _listLoadedState {
-  const _$listLoadedStateImpl();
+class _$failureStateImpl implements _failureState {
+  const _$failureStateImpl({required this.msg});
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'HomeState.listLoaded()';
+    return 'HomeState.failure(msg: $msg)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$listLoadedStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$failureStateImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$failureStateImplCopyWith<_$failureStateImpl> get copyWith =>
+      __$$failureStateImplCopyWithImpl<_$failureStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadLing,
-    required TResult Function() listLoaded,
+    required TResult Function(String msg) failure,
+    required TResult Function(List<Data> data) listLoaded,
   }) {
-    return listLoaded();
+    return failure(msg);
   }
 
   @override
@@ -345,9 +390,10 @@ class _$listLoadedStateImpl implements _listLoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadLing,
-    TResult? Function()? listLoaded,
+    TResult? Function(String msg)? failure,
+    TResult? Function(List<Data> data)? listLoaded,
   }) {
-    return listLoaded?.call();
+    return failure?.call(msg);
   }
 
   @override
@@ -355,11 +401,12 @@ class _$listLoadedStateImpl implements _listLoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadLing,
-    TResult Function()? listLoaded,
+    TResult Function(String msg)? failure,
+    TResult Function(List<Data> data)? listLoaded,
     required TResult orElse(),
   }) {
-    if (listLoaded != null) {
-      return listLoaded();
+    if (failure != null) {
+      return failure(msg);
     }
     return orElse();
   }
@@ -369,6 +416,159 @@ class _$listLoadedStateImpl implements _listLoadedState {
   TResult map<TResult extends Object?>({
     required TResult Function(_initialStatet value) initial,
     required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_failureState value) failure,
+    required TResult Function(_listLoadedState value) listLoaded,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_initialStatet value)? initial,
+    TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_failureState value)? failure,
+    TResult? Function(_listLoadedState value)? listLoaded,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_initialStatet value)? initial,
+    TResult Function(_loadingState value)? loadLing,
+    TResult Function(_failureState value)? failure,
+    TResult Function(_listLoadedState value)? listLoaded,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _failureState implements HomeState {
+  const factory _failureState({required final String msg}) = _$failureStateImpl;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  _$$failureStateImplCopyWith<_$failureStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$listLoadedStateImplCopyWith<$Res> {
+  factory _$$listLoadedStateImplCopyWith(_$listLoadedStateImpl value,
+          $Res Function(_$listLoadedStateImpl) then) =
+      __$$listLoadedStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Data> data});
+}
+
+/// @nodoc
+class __$$listLoadedStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$listLoadedStateImpl>
+    implements _$$listLoadedStateImplCopyWith<$Res> {
+  __$$listLoadedStateImplCopyWithImpl(
+      _$listLoadedStateImpl _value, $Res Function(_$listLoadedStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$listLoadedStateImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Data>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$listLoadedStateImpl implements _listLoadedState {
+  const _$listLoadedStateImpl({required final List<Data> data}) : _data = data;
+
+  final List<Data> _data;
+  @override
+  List<Data> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'HomeState.listLoaded(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$listLoadedStateImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$listLoadedStateImplCopyWith<_$listLoadedStateImpl> get copyWith =>
+      __$$listLoadedStateImplCopyWithImpl<_$listLoadedStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadLing,
+    required TResult Function(String msg) failure,
+    required TResult Function(List<Data> data) listLoaded,
+  }) {
+    return listLoaded(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadLing,
+    TResult? Function(String msg)? failure,
+    TResult? Function(List<Data> data)? listLoaded,
+  }) {
+    return listLoaded?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadLing,
+    TResult Function(String msg)? failure,
+    TResult Function(List<Data> data)? listLoaded,
+    required TResult orElse(),
+  }) {
+    if (listLoaded != null) {
+      return listLoaded(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_initialStatet value) initial,
+    required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
   }) {
     return listLoaded(this);
@@ -379,6 +579,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initialStatet value)? initial,
     TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
   }) {
     return listLoaded?.call(this);
@@ -389,6 +590,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialStatet value)? initial,
     TResult Function(_loadingState value)? loadLing,
+    TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
     required TResult orElse(),
   }) {
@@ -400,5 +602,11 @@ class _$listLoadedStateImpl implements _listLoadedState {
 }
 
 abstract class _listLoadedState implements HomeState {
-  const factory _listLoadedState() = _$listLoadedStateImpl;
+  const factory _listLoadedState({required final List<Data> data}) =
+      _$listLoadedStateImpl;
+
+  List<Data> get data;
+  @JsonKey(ignore: true)
+  _$$listLoadedStateImplCopyWith<_$listLoadedStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

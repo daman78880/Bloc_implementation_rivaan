@@ -8,12 +8,13 @@ import '../repository/auth_repository.dart';
 
 class UserLogin implements UseCase<LoginModel, LoginParsingModel> {
   final AuthRepository authRepository;
+
   const UserLogin(this.authRepository);
 
   @override
   Future<Either<Failure, LoginModel>> call(LoginParsingModel params) async {
-    return await authRepository.loginWithEmailPassword(params: params,
+    return await authRepository.loginWithEmailPassword(
+      params: params,
     );
   }
 }
-
