@@ -10,4 +10,5 @@ sealed class HomeState with _$HomeState{
   const factory HomeState.loading() = _loadingState;
   const factory HomeState.failure({required String msg}) = _failureState;
   const factory HomeState.listLoaded({required List<home_model.Data> data}) = _listLoadedState;
+  const factory HomeState.onPaginateLoad({required List<home_model.Data> data}) = _onPaginateLoadState;
 }

@@ -22,6 +22,7 @@ mixin _$HomeState {
     required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
+    required TResult Function(List<Data> data) onPaginateLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$HomeState {
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
+    TResult? Function(List<Data> data)? onPaginateLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$HomeState {
     TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
+    TResult Function(List<Data> data)? onPaginateLoad,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$HomeState {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
+    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$HomeState {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
+    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$HomeState {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
+    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$initialStatetImpl implements _initialStatet {
     required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
+    required TResult Function(List<Data> data) onPaginateLoad,
   }) {
     return initial();
   }
@@ -138,6 +145,7 @@ class _$initialStatetImpl implements _initialStatet {
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
+    TResult? Function(List<Data> data)? onPaginateLoad,
   }) {
     return initial?.call();
   }
@@ -149,6 +157,7 @@ class _$initialStatetImpl implements _initialStatet {
     TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
+    TResult Function(List<Data> data)? onPaginateLoad,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -164,6 +173,7 @@ class _$initialStatetImpl implements _initialStatet {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
+    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
   }) {
     return initial(this);
   }
@@ -175,6 +185,7 @@ class _$initialStatetImpl implements _initialStatet {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
+    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
   }) {
     return initial?.call(this);
   }
@@ -186,6 +197,7 @@ class _$initialStatetImpl implements _initialStatet {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
+    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -241,6 +253,7 @@ class _$loadingStateImpl implements _loadingState {
     required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
+    required TResult Function(List<Data> data) onPaginateLoad,
   }) {
     return loading();
   }
@@ -252,6 +265,7 @@ class _$loadingStateImpl implements _loadingState {
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
+    TResult? Function(List<Data> data)? onPaginateLoad,
   }) {
     return loading?.call();
   }
@@ -263,6 +277,7 @@ class _$loadingStateImpl implements _loadingState {
     TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
+    TResult Function(List<Data> data)? onPaginateLoad,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -278,6 +293,7 @@ class _$loadingStateImpl implements _loadingState {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
+    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
   }) {
     return loading(this);
   }
@@ -289,6 +305,7 @@ class _$loadingStateImpl implements _loadingState {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
+    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
   }) {
     return loading?.call(this);
   }
@@ -300,6 +317,7 @@ class _$loadingStateImpl implements _loadingState {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
+    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -381,6 +399,7 @@ class _$failureStateImpl implements _failureState {
     required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
+    required TResult Function(List<Data> data) onPaginateLoad,
   }) {
     return failure(msg);
   }
@@ -392,6 +411,7 @@ class _$failureStateImpl implements _failureState {
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
+    TResult? Function(List<Data> data)? onPaginateLoad,
   }) {
     return failure?.call(msg);
   }
@@ -403,6 +423,7 @@ class _$failureStateImpl implements _failureState {
     TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
+    TResult Function(List<Data> data)? onPaginateLoad,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -418,6 +439,7 @@ class _$failureStateImpl implements _failureState {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
+    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
   }) {
     return failure(this);
   }
@@ -429,6 +451,7 @@ class _$failureStateImpl implements _failureState {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
+    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
   }) {
     return failure?.call(this);
   }
@@ -440,6 +463,7 @@ class _$failureStateImpl implements _failureState {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
+    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -533,6 +557,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
     required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
+    required TResult Function(List<Data> data) onPaginateLoad,
   }) {
     return listLoaded(data);
   }
@@ -544,6 +569,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
+    TResult? Function(List<Data> data)? onPaginateLoad,
   }) {
     return listLoaded?.call(data);
   }
@@ -555,6 +581,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
     TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
+    TResult Function(List<Data> data)? onPaginateLoad,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
@@ -570,6 +597,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
+    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
   }) {
     return listLoaded(this);
   }
@@ -581,6 +609,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
+    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
   }) {
     return listLoaded?.call(this);
   }
@@ -592,6 +621,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
+    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
@@ -608,5 +638,165 @@ abstract class _listLoadedState implements HomeState {
   List<Data> get data;
   @JsonKey(ignore: true)
   _$$listLoadedStateImplCopyWith<_$listLoadedStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$onPaginateLoadStateImplCopyWith<$Res> {
+  factory _$$onPaginateLoadStateImplCopyWith(_$onPaginateLoadStateImpl value,
+          $Res Function(_$onPaginateLoadStateImpl) then) =
+      __$$onPaginateLoadStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Data> data});
+}
+
+/// @nodoc
+class __$$onPaginateLoadStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$onPaginateLoadStateImpl>
+    implements _$$onPaginateLoadStateImplCopyWith<$Res> {
+  __$$onPaginateLoadStateImplCopyWithImpl(_$onPaginateLoadStateImpl _value,
+      $Res Function(_$onPaginateLoadStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$onPaginateLoadStateImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Data>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$onPaginateLoadStateImpl implements _onPaginateLoadState {
+  const _$onPaginateLoadStateImpl({required final List<Data> data})
+      : _data = data;
+
+  final List<Data> _data;
+  @override
+  List<Data> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'HomeState.onPaginateLoad(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$onPaginateLoadStateImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$onPaginateLoadStateImplCopyWith<_$onPaginateLoadStateImpl> get copyWith =>
+      __$$onPaginateLoadStateImplCopyWithImpl<_$onPaginateLoadStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String msg) failure,
+    required TResult Function(List<Data> data) listLoaded,
+    required TResult Function(List<Data> data) onPaginateLoad,
+  }) {
+    return onPaginateLoad(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String msg)? failure,
+    TResult? Function(List<Data> data)? listLoaded,
+    TResult? Function(List<Data> data)? onPaginateLoad,
+  }) {
+    return onPaginateLoad?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String msg)? failure,
+    TResult Function(List<Data> data)? listLoaded,
+    TResult Function(List<Data> data)? onPaginateLoad,
+    required TResult orElse(),
+  }) {
+    if (onPaginateLoad != null) {
+      return onPaginateLoad(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_initialStatet value) initial,
+    required TResult Function(_loadingState value) loading,
+    required TResult Function(_failureState value) failure,
+    required TResult Function(_listLoadedState value) listLoaded,
+    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
+  }) {
+    return onPaginateLoad(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_initialStatet value)? initial,
+    TResult? Function(_loadingState value)? loading,
+    TResult? Function(_failureState value)? failure,
+    TResult? Function(_listLoadedState value)? listLoaded,
+    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
+  }) {
+    return onPaginateLoad?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_initialStatet value)? initial,
+    TResult Function(_loadingState value)? loading,
+    TResult Function(_failureState value)? failure,
+    TResult Function(_listLoadedState value)? listLoaded,
+    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
+    required TResult orElse(),
+  }) {
+    if (onPaginateLoad != null) {
+      return onPaginateLoad(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _onPaginateLoadState implements HomeState {
+  const factory _onPaginateLoadState({required final List<Data> data}) =
+      _$onPaginateLoadStateImpl;
+
+  List<Data> get data;
+  @JsonKey(ignore: true)
+  _$$onPaginateLoadStateImplCopyWith<_$onPaginateLoadStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
