@@ -19,7 +19,7 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadLing,
+    required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
   }) =>
@@ -27,7 +27,7 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadLing,
+    TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
   }) =>
@@ -35,7 +35,7 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadLing,
+    TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
     required TResult orElse(),
@@ -44,7 +44,7 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialStatet value) initial,
-    required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
   }) =>
@@ -52,7 +52,7 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initialStatet value)? initial,
-    TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
   }) =>
@@ -60,7 +60,7 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialStatet value)? initial,
-    TResult Function(_loadingState value)? loadLing,
+    TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
     required TResult orElse(),
@@ -124,7 +124,7 @@ class _$initialStatetImpl implements _initialStatet {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadLing,
+    required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
   }) {
@@ -135,7 +135,7 @@ class _$initialStatetImpl implements _initialStatet {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadLing,
+    TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
   }) {
@@ -146,7 +146,7 @@ class _$initialStatetImpl implements _initialStatet {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadLing,
+    TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
     required TResult orElse(),
@@ -161,7 +161,7 @@ class _$initialStatetImpl implements _initialStatet {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialStatet value) initial,
-    required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
   }) {
@@ -172,7 +172,7 @@ class _$initialStatetImpl implements _initialStatet {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initialStatet value)? initial,
-    TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
   }) {
@@ -183,7 +183,7 @@ class _$initialStatetImpl implements _initialStatet {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialStatet value)? initial,
-    TResult Function(_loadingState value)? loadLing,
+    TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
     required TResult orElse(),
@@ -222,7 +222,7 @@ class _$loadingStateImpl implements _loadingState {
 
   @override
   String toString() {
-    return 'HomeState.loadLing()';
+    return 'HomeState.loading()';
   }
 
   @override
@@ -238,35 +238,35 @@ class _$loadingStateImpl implements _loadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadLing,
+    required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
   }) {
-    return loadLing();
+    return loading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadLing,
+    TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
   }) {
-    return loadLing?.call();
+    return loading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadLing,
+    TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
     required TResult orElse(),
   }) {
-    if (loadLing != null) {
-      return loadLing();
+    if (loading != null) {
+      return loading();
     }
     return orElse();
   }
@@ -275,35 +275,35 @@ class _$loadingStateImpl implements _loadingState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialStatet value) initial,
-    required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
   }) {
-    return loadLing(this);
+    return loading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initialStatet value)? initial,
-    TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
   }) {
-    return loadLing?.call(this);
+    return loading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialStatet value)? initial,
-    TResult Function(_loadingState value)? loadLing,
+    TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
     required TResult orElse(),
   }) {
-    if (loadLing != null) {
-      return loadLing(this);
+    if (loading != null) {
+      return loading(this);
     }
     return orElse();
   }
@@ -378,7 +378,7 @@ class _$failureStateImpl implements _failureState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadLing,
+    required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
   }) {
@@ -389,7 +389,7 @@ class _$failureStateImpl implements _failureState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadLing,
+    TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
   }) {
@@ -400,7 +400,7 @@ class _$failureStateImpl implements _failureState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadLing,
+    TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
     required TResult orElse(),
@@ -415,7 +415,7 @@ class _$failureStateImpl implements _failureState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialStatet value) initial,
-    required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
   }) {
@@ -426,7 +426,7 @@ class _$failureStateImpl implements _failureState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initialStatet value)? initial,
-    TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
   }) {
@@ -437,7 +437,7 @@ class _$failureStateImpl implements _failureState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialStatet value)? initial,
-    TResult Function(_loadingState value)? loadLing,
+    TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
     required TResult orElse(),
@@ -530,7 +530,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadLing,
+    required TResult Function() loading,
     required TResult Function(String msg) failure,
     required TResult Function(List<Data> data) listLoaded,
   }) {
@@ -541,7 +541,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadLing,
+    TResult? Function()? loading,
     TResult? Function(String msg)? failure,
     TResult? Function(List<Data> data)? listLoaded,
   }) {
@@ -552,7 +552,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadLing,
+    TResult Function()? loading,
     TResult Function(String msg)? failure,
     TResult Function(List<Data> data)? listLoaded,
     required TResult orElse(),
@@ -567,7 +567,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initialStatet value) initial,
-    required TResult Function(_loadingState value) loadLing,
+    required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
   }) {
@@ -578,7 +578,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initialStatet value)? initial,
-    TResult? Function(_loadingState value)? loadLing,
+    TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
   }) {
@@ -589,7 +589,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initialStatet value)? initial,
-    TResult Function(_loadingState value)? loadLing,
+    TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
     required TResult orElse(),

@@ -7,7 +7,7 @@ part  'home_state.freezed.dart';
 @freezed
 sealed class HomeState with _$HomeState{
   const factory HomeState.initial() = _initialStatet;
-  const factory HomeState.loadLing() = _loadingState;
+  const factory HomeState.loading() = _loadingState;
   const factory HomeState.failure({required String msg}) = _failureState;
   const factory HomeState.listLoaded({required List<home_model.Data> data}) = _listLoadedState;
 }

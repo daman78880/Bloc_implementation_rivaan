@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc_implementation_rivaan/core/common/app_extension.dart';
 import 'package:bloc_implementation_rivaan/features/auth/data/models/login_model.dart';
 import 'package:bloc_implementation_rivaan/features/home/data/models/home_model.dart';
@@ -19,12 +21,13 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   @override
   Future<HomeModel> getUserList({required int params}) async {
     try {
-      final response = await dioClient.dio.post(ApiConfig.userList,
+      final response = await dioClient.dio.get(ApiConfig.userList,
           queryParameters: {'page': params},
           options: Options(
             contentType: 'application/json',
           ));
       if (response.statusCode.success) {
+        log('return reponse${response.data.toString()}');
         return HomeModel.fromJson(response.data);
       } else {
         throw ServerException(response.statusMessage ?? '');

@@ -1,6 +1,8 @@
 import 'package:bloc_implementation_rivaan/core/common/widgets/loader.dart';
+import 'package:bloc_implementation_rivaan/features/home/data/models/home_model.dart';
 import 'package:bloc_implementation_rivaan/features/home/presentation/bloc/home_bloc.dart';
 import 'package:bloc_implementation_rivaan/features/home/presentation/bloc/home_state.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,6 +18,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+
+
   @override
   void initState() {
     context.read<HomeBloc>().add(const HomeEvent.getUserList(pageNo: 1));
@@ -31,50 +36,95 @@ class _HomeScreenState extends State<HomeScreen> {
           style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 18.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+
+            BlocConsumer<HomeBloc, HomeState>(
+              listener: (context, state) {
+                state.mapOrNull(
+                  listLoaded: (value) {
+                    showSnackBar(context, 'User login successfully');
+                  },
+                  failure: (value) {
+                    showSnackBar(context, value.msg);
+                  },
+                );
+              },
+              builder: (context, state) {
+                return state.maybeWhen(
+                  listLoaded: (data) {
+                    return Expanded(
+                      child: ListView.separated(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (context, index) {
+                            return userItemWidget(data[index]);
+                          },
+                          separatorBuilder: (context, index) {
+                            return SizedBox(
+                              height: 15.h,
+                            );
+                          },
+                          itemCount: data.length),
+                    );
+                  },
+                  orElse: () {
+                    return const Center(child: Loader());
+                  },
+                );
+              },
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget userItemWidget(Data data) {
+    return IntrinsicHeight(
+      child: Row(
         children: [
-          Text(
-            'User list',
-            style: Theme.of(context).textTheme.headlineMedium,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: SizedBox(
+              width: 100.w,
+              height: 100.w,
+              child: CachedNetworkImage(
+                imageUrl: data.avatar,
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
           ),
-          BlocConsumer<HomeBloc, HomeState>(
-            listener: (context, state) {
-              state.mapOrNull(
-                listLoaded: (value) {
-                  showSnackBar(context, 'User login successfully');
-                },
-                failure: (value) {
-                  showSnackBar(context, value.msg);
-                },
-              );
-            },
-            builder: (context, state) {
-              return state.maybeWhen(
-                listLoaded: (data) {
-                  return Expanded(
-                    child: ListView.separated(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (context, index) {
-                          return Text(
-                            '${data[index].email}',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          );
-                        },
-                        separatorBuilder: (context, index) {
-                          return SizedBox(
-                            height: 10.h,
-                          );
-                        },
-                        itemCount: data.length),
-                  );
-                },
-                orElse: () {
-                  return const Center(child: Loader());
-                },
-              );
-            },
+          SizedBox(
+            width: 15.w,
+          ),
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height:  10.h,
+                ),
+                Text(
+                  'Id : ${data.id}',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                Text(
+                  'Name : ${data.first_name} ${data.last_name}',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                Text(
+                  'Email : ${data.email}',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
           )
         ],
       ),

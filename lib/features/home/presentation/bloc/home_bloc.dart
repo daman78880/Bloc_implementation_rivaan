@@ -4,14 +4,14 @@ import 'home_event.dart';
 import 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeUseCase _homeUserCase;
+  final HomeUseCase _homeUserCase;
 
   HomeBloc({required HomeUseCase homeUserCase})
       : _homeUserCase = homeUserCase,
         super(const HomeState.initial()) {
-    on<HomeEvent>((event, emit) {
-      emit(const HomeState.loadLing());
-      event.map(
+    on<HomeEvent>((event, emit) async {
+      emit(const HomeState.loading());
+      await event.map(
         getUserList: (event) async => await _onGetUserList(event, emit),
       );
     });
@@ -19,9 +19,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   _onGetUserList(event, Emitter<HomeState> emit) async {
     final res = await _homeUserCase.call(event.pageNo);
-    if (!emit.isDone) {
-      res.fold((l) => emit(HomeState.failure(msg: l.message)),
-              (r) => emit(HomeState.listLoaded(data: r.data)));
-    }
+    res.fold((l) {
+      emit(HomeState.failure(msg: l.message));
+    }, (r) {
+      emit(HomeState.listLoaded(data: r.data));
+    });
   }
 }
