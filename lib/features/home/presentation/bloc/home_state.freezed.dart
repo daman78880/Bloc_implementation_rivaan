@@ -21,8 +21,10 @@ mixin _$HomeState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String msg) failure,
-    required TResult Function(List<Data> data) listLoaded,
-    required TResult Function(List<Data> data) onPaginateLoad,
+    required TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)
+        listLoaded,
+    required TResult Function() emptyList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,8 +32,10 @@ mixin _$HomeState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
-    TResult? Function(List<Data> data)? listLoaded,
-    TResult? Function(List<Data> data)? onPaginateLoad,
+    TResult? Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult? Function()? emptyList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,8 +43,10 @@ mixin _$HomeState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String msg)? failure,
-    TResult Function(List<Data> data)? listLoaded,
-    TResult Function(List<Data> data)? onPaginateLoad,
+    TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult Function()? emptyList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +56,7 @@ mixin _$HomeState {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
-    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
+    required TResult Function(_emptyListState value) emptyList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,7 +65,7 @@ mixin _$HomeState {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
-    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult? Function(_emptyListState value)? emptyList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,7 +74,7 @@ mixin _$HomeState {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
-    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult Function(_emptyListState value)? emptyList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,8 +138,10 @@ class _$initialStatetImpl implements _initialStatet {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String msg) failure,
-    required TResult Function(List<Data> data) listLoaded,
-    required TResult Function(List<Data> data) onPaginateLoad,
+    required TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)
+        listLoaded,
+    required TResult Function() emptyList,
   }) {
     return initial();
   }
@@ -144,8 +152,10 @@ class _$initialStatetImpl implements _initialStatet {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
-    TResult? Function(List<Data> data)? listLoaded,
-    TResult? Function(List<Data> data)? onPaginateLoad,
+    TResult? Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult? Function()? emptyList,
   }) {
     return initial?.call();
   }
@@ -156,8 +166,10 @@ class _$initialStatetImpl implements _initialStatet {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String msg)? failure,
-    TResult Function(List<Data> data)? listLoaded,
-    TResult Function(List<Data> data)? onPaginateLoad,
+    TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult Function()? emptyList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -173,7 +185,7 @@ class _$initialStatetImpl implements _initialStatet {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
-    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
+    required TResult Function(_emptyListState value) emptyList,
   }) {
     return initial(this);
   }
@@ -185,7 +197,7 @@ class _$initialStatetImpl implements _initialStatet {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
-    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult? Function(_emptyListState value)? emptyList,
   }) {
     return initial?.call(this);
   }
@@ -197,7 +209,7 @@ class _$initialStatetImpl implements _initialStatet {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
-    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult Function(_emptyListState value)? emptyList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -252,8 +264,10 @@ class _$loadingStateImpl implements _loadingState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String msg) failure,
-    required TResult Function(List<Data> data) listLoaded,
-    required TResult Function(List<Data> data) onPaginateLoad,
+    required TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)
+        listLoaded,
+    required TResult Function() emptyList,
   }) {
     return loading();
   }
@@ -264,8 +278,10 @@ class _$loadingStateImpl implements _loadingState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
-    TResult? Function(List<Data> data)? listLoaded,
-    TResult? Function(List<Data> data)? onPaginateLoad,
+    TResult? Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult? Function()? emptyList,
   }) {
     return loading?.call();
   }
@@ -276,8 +292,10 @@ class _$loadingStateImpl implements _loadingState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String msg)? failure,
-    TResult Function(List<Data> data)? listLoaded,
-    TResult Function(List<Data> data)? onPaginateLoad,
+    TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult Function()? emptyList,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -293,7 +311,7 @@ class _$loadingStateImpl implements _loadingState {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
-    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
+    required TResult Function(_emptyListState value) emptyList,
   }) {
     return loading(this);
   }
@@ -305,7 +323,7 @@ class _$loadingStateImpl implements _loadingState {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
-    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult? Function(_emptyListState value)? emptyList,
   }) {
     return loading?.call(this);
   }
@@ -317,7 +335,7 @@ class _$loadingStateImpl implements _loadingState {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
-    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult Function(_emptyListState value)? emptyList,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -398,8 +416,10 @@ class _$failureStateImpl implements _failureState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String msg) failure,
-    required TResult Function(List<Data> data) listLoaded,
-    required TResult Function(List<Data> data) onPaginateLoad,
+    required TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)
+        listLoaded,
+    required TResult Function() emptyList,
   }) {
     return failure(msg);
   }
@@ -410,8 +430,10 @@ class _$failureStateImpl implements _failureState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
-    TResult? Function(List<Data> data)? listLoaded,
-    TResult? Function(List<Data> data)? onPaginateLoad,
+    TResult? Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult? Function()? emptyList,
   }) {
     return failure?.call(msg);
   }
@@ -422,8 +444,10 @@ class _$failureStateImpl implements _failureState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String msg)? failure,
-    TResult Function(List<Data> data)? listLoaded,
-    TResult Function(List<Data> data)? onPaginateLoad,
+    TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult Function()? emptyList,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -439,7 +463,7 @@ class _$failureStateImpl implements _failureState {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
-    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
+    required TResult Function(_emptyListState value) emptyList,
   }) {
     return failure(this);
   }
@@ -451,7 +475,7 @@ class _$failureStateImpl implements _failureState {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
-    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult? Function(_emptyListState value)? emptyList,
   }) {
     return failure?.call(this);
   }
@@ -463,7 +487,7 @@ class _$failureStateImpl implements _failureState {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
-    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult Function(_emptyListState value)? emptyList,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -488,7 +512,10 @@ abstract class _$$listLoadedStateImplCopyWith<$Res> {
           $Res Function(_$listLoadedStateImpl) then) =
       __$$listLoadedStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Data> data});
+  $Res call(
+      {List<Data> data,
+      LoadingMore? loadingMore,
+      LoadMoreError? loadMoreError});
 }
 
 /// @nodoc
@@ -503,12 +530,22 @@ class __$$listLoadedStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? loadingMore = freezed,
+    Object? loadMoreError = freezed,
   }) {
     return _then(_$listLoadedStateImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<Data>,
+      loadingMore: freezed == loadingMore
+          ? _value.loadingMore
+          : loadingMore // ignore: cast_nullable_to_non_nullable
+              as LoadingMore?,
+      loadMoreError: freezed == loadMoreError
+          ? _value.loadMoreError
+          : loadMoreError // ignore: cast_nullable_to_non_nullable
+              as LoadMoreError?,
     ));
   }
 }
@@ -516,7 +553,9 @@ class __$$listLoadedStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$listLoadedStateImpl implements _listLoadedState {
-  const _$listLoadedStateImpl({required final List<Data> data}) : _data = data;
+  const _$listLoadedStateImpl(
+      {required final List<Data> data, this.loadingMore, this.loadMoreError})
+      : _data = data;
 
   final List<Data> _data;
   @override
@@ -527,8 +566,13 @@ class _$listLoadedStateImpl implements _listLoadedState {
   }
 
   @override
+  final LoadingMore? loadingMore;
+  @override
+  final LoadMoreError? loadMoreError;
+
+  @override
   String toString() {
-    return 'HomeState.listLoaded(data: $data)';
+    return 'HomeState.listLoaded(data: $data, loadingMore: $loadingMore, loadMoreError: $loadMoreError)';
   }
 
   @override
@@ -536,12 +580,16 @@ class _$listLoadedStateImpl implements _listLoadedState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$listLoadedStateImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.loadingMore, loadingMore) ||
+                other.loadingMore == loadingMore) &&
+            (identical(other.loadMoreError, loadMoreError) ||
+                other.loadMoreError == loadMoreError));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_data), loadingMore, loadMoreError);
 
   @JsonKey(ignore: true)
   @override
@@ -556,10 +604,12 @@ class _$listLoadedStateImpl implements _listLoadedState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String msg) failure,
-    required TResult Function(List<Data> data) listLoaded,
-    required TResult Function(List<Data> data) onPaginateLoad,
+    required TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)
+        listLoaded,
+    required TResult Function() emptyList,
   }) {
-    return listLoaded(data);
+    return listLoaded(data, loadingMore, loadMoreError);
   }
 
   @override
@@ -568,10 +618,12 @@ class _$listLoadedStateImpl implements _listLoadedState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
-    TResult? Function(List<Data> data)? listLoaded,
-    TResult? Function(List<Data> data)? onPaginateLoad,
+    TResult? Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult? Function()? emptyList,
   }) {
-    return listLoaded?.call(data);
+    return listLoaded?.call(data, loadingMore, loadMoreError);
   }
 
   @override
@@ -580,12 +632,14 @@ class _$listLoadedStateImpl implements _listLoadedState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String msg)? failure,
-    TResult Function(List<Data> data)? listLoaded,
-    TResult Function(List<Data> data)? onPaginateLoad,
+    TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult Function()? emptyList,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
-      return listLoaded(data);
+      return listLoaded(data, loadingMore, loadMoreError);
     }
     return orElse();
   }
@@ -597,7 +651,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
-    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
+    required TResult Function(_emptyListState value) emptyList,
   }) {
     return listLoaded(this);
   }
@@ -609,7 +663,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
-    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult? Function(_emptyListState value)? emptyList,
   }) {
     return listLoaded?.call(this);
   }
@@ -621,7 +675,7 @@ class _$listLoadedStateImpl implements _listLoadedState {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
-    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult Function(_emptyListState value)? emptyList,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
@@ -632,83 +686,53 @@ class _$listLoadedStateImpl implements _listLoadedState {
 }
 
 abstract class _listLoadedState implements HomeState {
-  const factory _listLoadedState({required final List<Data> data}) =
-      _$listLoadedStateImpl;
+  const factory _listLoadedState(
+      {required final List<Data> data,
+      final LoadingMore? loadingMore,
+      final LoadMoreError? loadMoreError}) = _$listLoadedStateImpl;
 
   List<Data> get data;
+  LoadingMore? get loadingMore;
+  LoadMoreError? get loadMoreError;
   @JsonKey(ignore: true)
   _$$listLoadedStateImplCopyWith<_$listLoadedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$onPaginateLoadStateImplCopyWith<$Res> {
-  factory _$$onPaginateLoadStateImplCopyWith(_$onPaginateLoadStateImpl value,
-          $Res Function(_$onPaginateLoadStateImpl) then) =
-      __$$onPaginateLoadStateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Data> data});
+abstract class _$$emptyListStateImplCopyWith<$Res> {
+  factory _$$emptyListStateImplCopyWith(_$emptyListStateImpl value,
+          $Res Function(_$emptyListStateImpl) then) =
+      __$$emptyListStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$onPaginateLoadStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$onPaginateLoadStateImpl>
-    implements _$$onPaginateLoadStateImplCopyWith<$Res> {
-  __$$onPaginateLoadStateImplCopyWithImpl(_$onPaginateLoadStateImpl _value,
-      $Res Function(_$onPaginateLoadStateImpl) _then)
+class __$$emptyListStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$emptyListStateImpl>
+    implements _$$emptyListStateImplCopyWith<$Res> {
+  __$$emptyListStateImplCopyWithImpl(
+      _$emptyListStateImpl _value, $Res Function(_$emptyListStateImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$onPaginateLoadStateImpl(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<Data>,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$onPaginateLoadStateImpl implements _onPaginateLoadState {
-  const _$onPaginateLoadStateImpl({required final List<Data> data})
-      : _data = data;
-
-  final List<Data> _data;
-  @override
-  List<Data> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
+class _$emptyListStateImpl implements _emptyListState {
+  const _$emptyListStateImpl();
 
   @override
   String toString() {
-    return 'HomeState.onPaginateLoad(data: $data)';
+    return 'HomeState.emptyList()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$onPaginateLoadStateImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+        (other.runtimeType == runtimeType && other is _$emptyListStateImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$onPaginateLoadStateImplCopyWith<_$onPaginateLoadStateImpl> get copyWith =>
-      __$$onPaginateLoadStateImplCopyWithImpl<_$onPaginateLoadStateImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -716,10 +740,12 @@ class _$onPaginateLoadStateImpl implements _onPaginateLoadState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String msg) failure,
-    required TResult Function(List<Data> data) listLoaded,
-    required TResult Function(List<Data> data) onPaginateLoad,
+    required TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)
+        listLoaded,
+    required TResult Function() emptyList,
   }) {
-    return onPaginateLoad(data);
+    return emptyList();
   }
 
   @override
@@ -728,10 +754,12 @@ class _$onPaginateLoadStateImpl implements _onPaginateLoadState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String msg)? failure,
-    TResult? Function(List<Data> data)? listLoaded,
-    TResult? Function(List<Data> data)? onPaginateLoad,
+    TResult? Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult? Function()? emptyList,
   }) {
-    return onPaginateLoad?.call(data);
+    return emptyList?.call();
   }
 
   @override
@@ -740,12 +768,14 @@ class _$onPaginateLoadStateImpl implements _onPaginateLoadState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String msg)? failure,
-    TResult Function(List<Data> data)? listLoaded,
-    TResult Function(List<Data> data)? onPaginateLoad,
+    TResult Function(List<Data> data, LoadingMore? loadingMore,
+            LoadMoreError? loadMoreError)?
+        listLoaded,
+    TResult Function()? emptyList,
     required TResult orElse(),
   }) {
-    if (onPaginateLoad != null) {
-      return onPaginateLoad(data);
+    if (emptyList != null) {
+      return emptyList();
     }
     return orElse();
   }
@@ -757,9 +787,9 @@ class _$onPaginateLoadStateImpl implements _onPaginateLoadState {
     required TResult Function(_loadingState value) loading,
     required TResult Function(_failureState value) failure,
     required TResult Function(_listLoadedState value) listLoaded,
-    required TResult Function(_onPaginateLoadState value) onPaginateLoad,
+    required TResult Function(_emptyListState value) emptyList,
   }) {
-    return onPaginateLoad(this);
+    return emptyList(this);
   }
 
   @override
@@ -769,9 +799,9 @@ class _$onPaginateLoadStateImpl implements _onPaginateLoadState {
     TResult? Function(_loadingState value)? loading,
     TResult? Function(_failureState value)? failure,
     TResult? Function(_listLoadedState value)? listLoaded,
-    TResult? Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult? Function(_emptyListState value)? emptyList,
   }) {
-    return onPaginateLoad?.call(this);
+    return emptyList?.call(this);
   }
 
   @override
@@ -781,22 +811,16 @@ class _$onPaginateLoadStateImpl implements _onPaginateLoadState {
     TResult Function(_loadingState value)? loading,
     TResult Function(_failureState value)? failure,
     TResult Function(_listLoadedState value)? listLoaded,
-    TResult Function(_onPaginateLoadState value)? onPaginateLoad,
+    TResult Function(_emptyListState value)? emptyList,
     required TResult orElse(),
   }) {
-    if (onPaginateLoad != null) {
-      return onPaginateLoad(this);
+    if (emptyList != null) {
+      return emptyList(this);
     }
     return orElse();
   }
 }
 
-abstract class _onPaginateLoadState implements HomeState {
-  const factory _onPaginateLoadState({required final List<Data> data}) =
-      _$onPaginateLoadStateImpl;
-
-  List<Data> get data;
-  @JsonKey(ignore: true)
-  _$$onPaginateLoadStateImplCopyWith<_$onPaginateLoadStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _emptyListState implements HomeState {
+  const factory _emptyListState() = _$emptyListStateImpl;
 }

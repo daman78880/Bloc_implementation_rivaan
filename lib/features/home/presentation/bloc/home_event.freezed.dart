@@ -16,49 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeEvent {
-  int get pageNo => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int pageNo) getUserList,
-    required TResult Function(int pageNo) getUserListByPaginate,
+    required TResult Function() getInitialListing,
+    required TResult Function() getMoreListingData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int pageNo)? getUserList,
-    TResult? Function(int pageNo)? getUserListByPaginate,
+    TResult? Function()? getInitialListing,
+    TResult? Function()? getMoreListingData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int pageNo)? getUserList,
-    TResult Function(int pageNo)? getUserListByPaginate,
+    TResult Function()? getInitialListing,
+    TResult Function()? getMoreListingData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_userListEvent value) getUserList,
-    required TResult Function(_getUserListByPaginateEvent value)
-        getUserListByPaginate,
+    required TResult Function(_getInitialListingEvent value) getInitialListing,
+    required TResult Function(_getMoreListingDataEvent value)
+        getMoreListingData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_userListEvent value)? getUserList,
-    TResult? Function(_getUserListByPaginateEvent value)? getUserListByPaginate,
+    TResult? Function(_getInitialListingEvent value)? getInitialListing,
+    TResult? Function(_getMoreListingDataEvent value)? getMoreListingData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_userListEvent value)? getUserList,
-    TResult Function(_getUserListByPaginateEvent value)? getUserListByPaginate,
+    TResult Function(_getInitialListingEvent value)? getInitialListing,
+    TResult Function(_getMoreListingDataEvent value)? getMoreListingData,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $HomeEventCopyWith<HomeEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -66,8 +61,6 @@ mixin _$HomeEvent {
 abstract class $HomeEventCopyWith<$Res> {
   factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
       _$HomeEventCopyWithImpl<$Res, HomeEvent>;
-  @useResult
-  $Res call({int pageNo});
 }
 
 /// @nodoc
@@ -79,111 +72,73 @@ class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageNo = null,
-  }) {
-    return _then(_value.copyWith(
-      pageNo: null == pageNo
-          ? _value.pageNo
-          : pageNo // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$userListEventImplCopyWith<$Res>
-    implements $HomeEventCopyWith<$Res> {
-  factory _$$userListEventImplCopyWith(
-          _$userListEventImpl value, $Res Function(_$userListEventImpl) then) =
-      __$$userListEventImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int pageNo});
+abstract class _$$getInitialListingEventImplCopyWith<$Res> {
+  factory _$$getInitialListingEventImplCopyWith(
+          _$getInitialListingEventImpl value,
+          $Res Function(_$getInitialListingEventImpl) then) =
+      __$$getInitialListingEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$userListEventImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$userListEventImpl>
-    implements _$$userListEventImplCopyWith<$Res> {
-  __$$userListEventImplCopyWithImpl(
-      _$userListEventImpl _value, $Res Function(_$userListEventImpl) _then)
+class __$$getInitialListingEventImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$getInitialListingEventImpl>
+    implements _$$getInitialListingEventImplCopyWith<$Res> {
+  __$$getInitialListingEventImplCopyWithImpl(
+      _$getInitialListingEventImpl _value,
+      $Res Function(_$getInitialListingEventImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageNo = null,
-  }) {
-    return _then(_$userListEventImpl(
-      pageNo: null == pageNo
-          ? _value.pageNo
-          : pageNo // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$userListEventImpl implements _userListEvent {
-  const _$userListEventImpl({required this.pageNo});
-
-  @override
-  final int pageNo;
+class _$getInitialListingEventImpl implements _getInitialListingEvent {
+  const _$getInitialListingEventImpl();
 
   @override
   String toString() {
-    return 'HomeEvent.getUserList(pageNo: $pageNo)';
+    return 'HomeEvent.getInitialListing()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$userListEventImpl &&
-            (identical(other.pageNo, pageNo) || other.pageNo == pageNo));
+            other is _$getInitialListingEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pageNo);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$userListEventImplCopyWith<_$userListEventImpl> get copyWith =>
-      __$$userListEventImplCopyWithImpl<_$userListEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int pageNo) getUserList,
-    required TResult Function(int pageNo) getUserListByPaginate,
+    required TResult Function() getInitialListing,
+    required TResult Function() getMoreListingData,
   }) {
-    return getUserList(pageNo);
+    return getInitialListing();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int pageNo)? getUserList,
-    TResult? Function(int pageNo)? getUserListByPaginate,
+    TResult? Function()? getInitialListing,
+    TResult? Function()? getMoreListingData,
   }) {
-    return getUserList?.call(pageNo);
+    return getInitialListing?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int pageNo)? getUserList,
-    TResult Function(int pageNo)? getUserListByPaginate,
+    TResult Function()? getInitialListing,
+    TResult Function()? getMoreListingData,
     required TResult orElse(),
   }) {
-    if (getUserList != null) {
-      return getUserList(pageNo);
+    if (getInitialListing != null) {
+      return getInitialListing();
     }
     return orElse();
   }
@@ -191,141 +146,105 @@ class _$userListEventImpl implements _userListEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_userListEvent value) getUserList,
-    required TResult Function(_getUserListByPaginateEvent value)
-        getUserListByPaginate,
+    required TResult Function(_getInitialListingEvent value) getInitialListing,
+    required TResult Function(_getMoreListingDataEvent value)
+        getMoreListingData,
   }) {
-    return getUserList(this);
+    return getInitialListing(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_userListEvent value)? getUserList,
-    TResult? Function(_getUserListByPaginateEvent value)? getUserListByPaginate,
+    TResult? Function(_getInitialListingEvent value)? getInitialListing,
+    TResult? Function(_getMoreListingDataEvent value)? getMoreListingData,
   }) {
-    return getUserList?.call(this);
+    return getInitialListing?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_userListEvent value)? getUserList,
-    TResult Function(_getUserListByPaginateEvent value)? getUserListByPaginate,
+    TResult Function(_getInitialListingEvent value)? getInitialListing,
+    TResult Function(_getMoreListingDataEvent value)? getMoreListingData,
     required TResult orElse(),
   }) {
-    if (getUserList != null) {
-      return getUserList(this);
+    if (getInitialListing != null) {
+      return getInitialListing(this);
     }
     return orElse();
   }
 }
 
-abstract class _userListEvent implements HomeEvent {
-  const factory _userListEvent({required final int pageNo}) =
-      _$userListEventImpl;
-
-  @override
-  int get pageNo;
-  @override
-  @JsonKey(ignore: true)
-  _$$userListEventImplCopyWith<_$userListEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _getInitialListingEvent implements HomeEvent {
+  const factory _getInitialListingEvent() = _$getInitialListingEventImpl;
 }
 
 /// @nodoc
-abstract class _$$getUserListByPaginateEventImplCopyWith<$Res>
-    implements $HomeEventCopyWith<$Res> {
-  factory _$$getUserListByPaginateEventImplCopyWith(
-          _$getUserListByPaginateEventImpl value,
-          $Res Function(_$getUserListByPaginateEventImpl) then) =
-      __$$getUserListByPaginateEventImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int pageNo});
+abstract class _$$getMoreListingDataEventImplCopyWith<$Res> {
+  factory _$$getMoreListingDataEventImplCopyWith(
+          _$getMoreListingDataEventImpl value,
+          $Res Function(_$getMoreListingDataEventImpl) then) =
+      __$$getMoreListingDataEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$getUserListByPaginateEventImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$getUserListByPaginateEventImpl>
-    implements _$$getUserListByPaginateEventImplCopyWith<$Res> {
-  __$$getUserListByPaginateEventImplCopyWithImpl(
-      _$getUserListByPaginateEventImpl _value,
-      $Res Function(_$getUserListByPaginateEventImpl) _then)
+class __$$getMoreListingDataEventImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$getMoreListingDataEventImpl>
+    implements _$$getMoreListingDataEventImplCopyWith<$Res> {
+  __$$getMoreListingDataEventImplCopyWithImpl(
+      _$getMoreListingDataEventImpl _value,
+      $Res Function(_$getMoreListingDataEventImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageNo = null,
-  }) {
-    return _then(_$getUserListByPaginateEventImpl(
-      pageNo: null == pageNo
-          ? _value.pageNo
-          : pageNo // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$getUserListByPaginateEventImpl implements _getUserListByPaginateEvent {
-  const _$getUserListByPaginateEventImpl({required this.pageNo});
-
-  @override
-  final int pageNo;
+class _$getMoreListingDataEventImpl implements _getMoreListingDataEvent {
+  const _$getMoreListingDataEventImpl();
 
   @override
   String toString() {
-    return 'HomeEvent.getUserListByPaginate(pageNo: $pageNo)';
+    return 'HomeEvent.getMoreListingData()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$getUserListByPaginateEventImpl &&
-            (identical(other.pageNo, pageNo) || other.pageNo == pageNo));
+            other is _$getMoreListingDataEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pageNo);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$getUserListByPaginateEventImplCopyWith<_$getUserListByPaginateEventImpl>
-      get copyWith => __$$getUserListByPaginateEventImplCopyWithImpl<
-          _$getUserListByPaginateEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int pageNo) getUserList,
-    required TResult Function(int pageNo) getUserListByPaginate,
+    required TResult Function() getInitialListing,
+    required TResult Function() getMoreListingData,
   }) {
-    return getUserListByPaginate(pageNo);
+    return getMoreListingData();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int pageNo)? getUserList,
-    TResult? Function(int pageNo)? getUserListByPaginate,
+    TResult? Function()? getInitialListing,
+    TResult? Function()? getMoreListingData,
   }) {
-    return getUserListByPaginate?.call(pageNo);
+    return getMoreListingData?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int pageNo)? getUserList,
-    TResult Function(int pageNo)? getUserListByPaginate,
+    TResult Function()? getInitialListing,
+    TResult Function()? getMoreListingData,
     required TResult orElse(),
   }) {
-    if (getUserListByPaginate != null) {
-      return getUserListByPaginate(pageNo);
+    if (getMoreListingData != null) {
+      return getMoreListingData();
     }
     return orElse();
   }
@@ -333,44 +252,36 @@ class _$getUserListByPaginateEventImpl implements _getUserListByPaginateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_userListEvent value) getUserList,
-    required TResult Function(_getUserListByPaginateEvent value)
-        getUserListByPaginate,
+    required TResult Function(_getInitialListingEvent value) getInitialListing,
+    required TResult Function(_getMoreListingDataEvent value)
+        getMoreListingData,
   }) {
-    return getUserListByPaginate(this);
+    return getMoreListingData(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_userListEvent value)? getUserList,
-    TResult? Function(_getUserListByPaginateEvent value)? getUserListByPaginate,
+    TResult? Function(_getInitialListingEvent value)? getInitialListing,
+    TResult? Function(_getMoreListingDataEvent value)? getMoreListingData,
   }) {
-    return getUserListByPaginate?.call(this);
+    return getMoreListingData?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_userListEvent value)? getUserList,
-    TResult Function(_getUserListByPaginateEvent value)? getUserListByPaginate,
+    TResult Function(_getInitialListingEvent value)? getInitialListing,
+    TResult Function(_getMoreListingDataEvent value)? getMoreListingData,
     required TResult orElse(),
   }) {
-    if (getUserListByPaginate != null) {
-      return getUserListByPaginate(this);
+    if (getMoreListingData != null) {
+      return getMoreListingData(this);
     }
     return orElse();
   }
 }
 
-abstract class _getUserListByPaginateEvent implements HomeEvent {
-  const factory _getUserListByPaginateEvent({required final int pageNo}) =
-      _$getUserListByPaginateEventImpl;
-
-  @override
-  int get pageNo;
-  @override
-  @JsonKey(ignore: true)
-  _$$getUserListByPaginateEventImplCopyWith<_$getUserListByPaginateEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+abstract class _getMoreListingDataEvent implements HomeEvent {
+  const factory _getMoreListingDataEvent() = _$getMoreListingDataEventImpl;
 }

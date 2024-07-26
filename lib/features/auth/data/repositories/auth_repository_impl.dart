@@ -78,7 +78,7 @@
 //   ) async {
 //     try {
 //       if (!await (connectionChecker.isConnected)) {
-//         return left(Failure(Constants.noConnectionErrorMessage));
+//         return left(Failure(AppString.noConnectionErrorMessage));
 //       }
 //       final user = await fn();
 //
@@ -88,13 +88,12 @@
 //     }
 //   }
 // }
-
 import 'package:bloc_implementation_rivaan/core/error/failures.dart';
 import 'package:bloc_implementation_rivaan/features/auth/data/models/login_model.dart';
 import 'package:bloc_implementation_rivaan/features/auth/data/models/login_parsing_model.dart';
 import 'package:dio/dio.dart';
-import 'package:fpdart/src/either.dart';
-import '../../../../core/constants/constants.dart';
+import 'package:fpdart/fpdart.dart';
+import '../../../../core/common/app_string.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/network/connection_checker.dart';
 import '../../../../core/network/dio_exception.dart';
@@ -115,7 +114,7 @@ class AuthRepositoryImpl implements AuthRepository {
       {required LoginParsingModel params}) async {
     try {
       if (!await (connectionChecker.isConnected)) {
-        return left(Failure(Constants.noConnectionErrorMessage));
+        return left(Failure(AppString.noConnectionErrorMessage));
       }
       final user =
           await remoteDataSource.loginWithEmailPassword(params: params);
@@ -135,7 +134,7 @@ class AuthRepositoryImpl implements AuthRepository {
       {required LoginParsingModel params}) async {
     try {
       if (!await (connectionChecker.isConnected)) {
-        return left(Failure(Constants.noConnectionErrorMessage));
+        return left(Failure(AppString.noConnectionErrorMessage));
       }
       final user =
           await remoteDataSource.signUpWithEmailPassword(params: params);

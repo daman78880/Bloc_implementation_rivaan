@@ -3,14 +3,16 @@ import 'package:bloc_implementation_rivaan/features/home/domain/repository/home_
 import 'package:bloc_implementation_rivaan/features/home/domain/usercases/home_use_case.dart';
 import 'package:bloc_implementation_rivaan/features/home/presentation/bloc/home_bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'core/common/cubits/app_user/app_user_cubit.dart';
+import 'core/common/cubits/lanuage/lanuage_cubit.dart';
 import 'core/network/connection_checker.dart';
 import 'core/network/dio_client.dart';
-import 'core/secrets/app_secrets.dart';
 import 'features/auth/data/datasources/auth_remote_data_source.dart';
 import 'features/auth/data/repositories/auth_repository_impl.dart';
 import 'features/auth/domain/repository/auth_repository.dart';

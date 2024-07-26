@@ -1,8 +1,14 @@
+import 'package:bloc_implementation_rivaan/core/utils/common_share_preference.dart';
 import 'package:bloc_implementation_rivaan/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bloc_implementation_rivaan/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'core/common/app_string.dart';
+import 'core/common/cubits/lanuage/lanuage_cubit.dart';
+import 'core/constants/device_constants.dart';
 import 'core/theme/app_theme.dart';
 import 'core/common/cubits/app_user/app_user_cubit.dart';
 import 'core/router/app_router.dart';
@@ -13,6 +19,9 @@ void main() async {
   await initDependencies();
   runApp(MultiBlocProvider(
     providers: [
+      BlocProvider(
+        create: (_) => serviceLocator<LanguageCubit>(),
+      ),
       BlocProvider(
         create: (_) => serviceLocator<AppUserCubit>(),
       ),
@@ -35,47 +44,53 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final FlutterLocalization localization = FlutterLocalization.instance;
+
   @override
   void initState() {
     super.initState();
+    initializeLocalization();
     // context.read<AuthBloc>().add(AuthIsUserLoggedIn());
   }
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-    builder: (context, child) {
-      return MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: 'Blog App',
-        themeMode: ThemeMode.dark,
-        darkTheme: AppTheme.lightAppTheme,
-        theme: AppTheme.lightAppTheme,
-        routerConfig: AppRouter.router,
-      );
-    }
+    return BlocBuilder<LanguageCubit, Locale>(
+        buildWhen: (previous, current) => previous != current,
+        builder: (context, state) {
+          return ScreenUtilInit(
+              // designSize: const Size(360, 690),
+              designSize:  const Size(DeviceConstants.designDeviceWidth, DeviceConstants.designDeviceHeight),
+              minTextAdapt: true,
+              splitScreenMode: true,
+              builder: (context, child) {
+                return MaterialApp.router(
+                  locale: state,
+                  supportedLocales: localization.supportedLocales,
+                  localizationsDelegates: localization.localizationsDelegates,
+                  debugShowCheckedModeBanner: false,
+                  title: 'Blog App',
+                  themeMode: ThemeMode.dark,
+                  darkTheme: AppTheme.lightAppTheme,
+                  theme: AppTheme.lightAppTheme,
+                  routerConfig: AppRouter.router,
+                );
+              });
+        });
+  }
+
+  void initializeLocalization() {
+    localization.init(
+      mapLocales: MapLocaleList.types,
+      initLanguageCode: MapLocaleList.types.first.languageCode,
     );
+    localization.onTranslatedLanguage = _onTranslatedLanguage;
+  }
+
+  // the setState function here is a must to add
+  void _onTranslatedLanguage(Locale? locale) {
+    // setState(() {});
   }
 }
 
-/*
-            child: MaterialApp(
-              supportedLocales: localization.supportedLocales,
-              localizationsDelegates: localization.localizationsDelegates,
-              builder: (context, child) {
-                final MediaQueryData data = MediaQuery.of(context);
-                return MediaQuery(
-                  data: data.copyWith(textScaleFactor: 1.0),
-                  child: child ?? const SizedBox.shrink(),
-                );
-              },
-              debugShowCheckedModeBanner: false,
-              theme: AppTheme.lightAppTheme,
-              initialRoute: AppRouter.splash,
-              onGenerateRoute: AppRouter.onGenerateRoute,
-            ),
-*
-* */
+

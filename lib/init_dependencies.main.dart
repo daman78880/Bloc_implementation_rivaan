@@ -9,6 +9,10 @@ Future<void> initDependencies() async {
   serviceLocator
       .registerLazySingleton<DioClient>(() => DioClient(serviceLocator<Dio>()));
   serviceLocator.registerLazySingleton<Dio>(() => Dio());
+  serviceLocator.registerLazySingleton<FlutterLocalization>(() => FlutterLocalization.instance);
+  //! External
+  final sharedPreferences = await SharedPreferences.getInstance();
+  serviceLocator.registerLazySingleton(() => sharedPreferences);
 
   Hive.defaultDirectory = (await getApplicationDocumentsDirectory()).path;
 
@@ -21,6 +25,9 @@ Future<void> initDependencies() async {
   // core
   serviceLocator.registerLazySingleton(
     () => AppUserCubit(),
+  );
+  serviceLocator.registerLazySingleton(
+    () => LanguageCubit(),
   );
   serviceLocator.registerFactory<ConnectionChecker>(
     () => ConnectionCheckerImpl(
@@ -40,6 +47,7 @@ void _initAuth() {
     ..registerFactory<HomeRemoteDataSource>(
       () => HomeRemoteDataSourceImpl(
         serviceLocator(),
+        serviceLocator(),
       ),
     )
     // Repository
@@ -51,7 +59,6 @@ void _initAuth() {
     )
     ..registerFactory<HomeRepository>(
       () => HomeRepositoryImpl(
-        serviceLocator(),
         serviceLocator(),
       ),
     )

@@ -1,3 +1,5 @@
+import 'package:bloc_implementation_rivaan/core/common/app_string.dart';
+import 'package:bloc_implementation_rivaan/core/common/cubits/lanuage/lanuage_cubit.dart';
 import 'package:bloc_implementation_rivaan/core/common/widgets/loader.dart';
 import 'package:bloc_implementation_rivaan/features/home/data/models/home_model.dart';
 import 'package:bloc_implementation_rivaan/features/home/presentation/bloc/home_bloc.dart';
@@ -5,9 +7,10 @@ import 'package:bloc_implementation_rivaan/features/home/presentation/bloc/home_
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/utils/show_snackbar.dart';
+import '../../../../init_dependencies.dart';
 import '../bloc/home_event.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,15 +23,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late ScrollController controller;
   bool isPageLoading = false;
-  int pageNo = 1;
-  var lst = [];
 
   @override
   void initState() {
-    controller = new ScrollController()
-      ..addListener(_scrollListener);
-    context.read<HomeBloc>().add(const HomeEvent.getUserList(pageNo: 1));
     super.initState();
+    controller = ScrollController()..addListener(_scrollListener);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<HomeBloc>().add(const HomeEvent.getInitialListing());
+    });
   }
 
   @override
@@ -36,12 +38,42 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Home',
-          style: Theme
-              .of(context)
-              .appBarTheme
-              .titleTextStyle,
+          AppString.home.getString(context),
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
+        actions: [
+          GestureDetector(
+              onTap: () {
+                serviceLocator<LanguageCubit>().changeLang();
+              //   var _localization = serviceLocator<FlutterLocalization>();
+              //   print('localication ${_localization.currentLocale?.languageCode} first ${MapLocaleList.types[0].languageCode} second ${MapLocaleList.types[1].languageCode}');
+              //   if( _localization.currentLocale?.languageCode == MapLocaleList.types[0].languageCode) {
+              //   _localization.translate(MapLocaleList.types[1].languageCode);
+              // }else{
+              //   _localization.translate(MapLocaleList.types[0].languageCode);
+              //   }
+              },
+              child: Icon(
+                Icons.change_circle_outlined,
+                size: 25.w,
+                color: Colors.white,
+              )),
+          SizedBox(
+            width: 10.w,
+          ),
+          GestureDetector(
+              onTap: () => context
+                  .read<HomeBloc>()
+                  .add(const HomeEvent.getInitialListing()),
+              child: Icon(
+                Icons.refresh,
+                size: 25.w,
+                color: Colors.white,
+              )),
+          SizedBox(
+            width: 18.w,
+          )
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 18.w),
@@ -52,7 +84,10 @@ class _HomeScreenState extends State<HomeScreen> {
               listener: (context, state) {
                 state.mapOrNull(
                   listLoaded: (value) {
-                    showSnackBar(context, 'User login successfully');
+                    if (value.loadingMore == null &&
+                        value.loadMoreError == null) {
+                      isPageLoading = false;
+                    }
                   },
                   failure: (value) {
                     showSnackBar(context, value.msg);
@@ -60,50 +95,94 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
               builder: (context, state) {
+                print('inside state is ${state}');
                 return state.maybeWhen(
-                  listLoaded: (data) {
+                  emptyList: () {
                     return Expanded(
-                      child: ListView.separated(
-                          controller: controller,
-                          physics: const RangeMaintainingScrollPhysics(),
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          itemBuilder: (context, index) {
-                            return userItemWidget(data[index]);
-                          },
-                          separatorBuilder: (context, index) {
-                            return SizedBox(
-                              height: 15.h,
-                            );
-                          },
-                          itemCount: data.length),
+                      child: Center(
+                        child: Text(
+                          AppString.notFound.getString(context),
+                          style: Theme.of(context).textTheme.headlineLarge,
+                        ),
+                      ),
+                    );
+                  },
+                  failure: (msg) {
+                    return Expanded(
+                      child: Center(
+                        child: Text(
+                          msg,
+                          style: Theme.of(context).textTheme.headlineLarge,
+                        ),
+                      ),
                     );
                   },
                   orElse: () {
-                    return const Center(child: Loader());
+                    return const Expanded(child: const Center(child: Loader()));
+                  },
+                  listLoaded: (data, loadingMore, loadMoreError) {
+                    return Expanded(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: ListView.separated(
+                                controller: controller,
+                                physics: const RangeMaintainingScrollPhysics(),
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                itemBuilder: (context, index) {
+                                  return userItemWidget(data[index]);
+                                },
+                                separatorBuilder: (context, index) {
+                                  return SizedBox(
+                                    height: 15.h,
+                                  );
+                                },
+                                itemCount: data.length),
+                          ),
+                          loadingMore != null
+                              ? Center(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        loadingMore.message,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge,
+                                      ),
+                                      SizedBox(
+                                        height: 10.h,
+                                      ),
+                                      const Loader()
+                                    ],
+                                  ),
+                                )
+                              : const SizedBox(),
+                          loadMoreError != null
+                              ? Center(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        loadMoreError.message,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge,
+                                      ),
+                                      SizedBox(
+                                        height: 10.h,
+                                      ),
+                                      const Loader()
+                                    ],
+                                  ),
+                                )
+                              : const SizedBox(),
+                        ],
+                      ),
+                    );
                   },
                 );
               },
             ),
-            BlocConsumer<HomeBloc, HomeState>(
-              listener: (context, state) {
-                state.mapOrNull(
-                  onPaginateLoad: (value) {
-                    showSnackBar(context, 'User login successfully');
-                  },
-                  failure: (value) {
-                    showSnackBar(context, value.msg);
-                  },
-                );
-              }
-            ,builder: (context, state) {
-              return state.maybeWhen(onPaginateLoad: (data) {
-                return Loader();
-              },
-              orElse: () {
-                return Loader();
-              },);
-            })
           ],
         ),
       ),
@@ -113,8 +192,8 @@ class _HomeScreenState extends State<HomeScreen> {
   _scrollListener() {
     print(controller.position.extentAfter);
     if (controller.position.extentAfter <= 0 && isPageLoading == false) {
-      pageNo = pageNo + 1;
-      context.read<HomeBloc>().add(HomeEvent.getUserList(pageNo: pageNo));
+      isPageLoading = true;
+      context.read<HomeBloc>().add(const HomeEvent.getMoreListingData());
     }
   }
 
@@ -131,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 imageUrl: data.avatar,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     CircularProgressIndicator(value: downloadProgress.progress),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           ),
@@ -148,24 +227,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Text(
                   'Id : ${data.id}',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .bodyLarge,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
                   'Name : ${data.first_name} ${data.last_name}',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .bodyMedium,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Text(
                   'Email : ${data.email}',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .bodyMedium,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),
