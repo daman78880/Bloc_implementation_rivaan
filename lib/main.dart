@@ -82,12 +82,10 @@ class _MyAppState extends State<MyApp> {
   void initializeLocalization() {
     localization.init(
       mapLocales: MapLocaleList.types,
-      initLanguageCode: MapLocaleList.types.first.languageCode,
+      initLanguageCode:  MapLocaleList.types.first.languageCode,
     );
     localization.onTranslatedLanguage = _onTranslatedLanguage;
   }
-
-  // the setState function here is a must to add
   void _onTranslatedLanguage(Locale? locale) {
     // setState(() {});
   }

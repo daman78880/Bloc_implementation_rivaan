@@ -8,7 +8,9 @@ import '../../../utils/common_share_preference.dart';
 import '../../app_string.dart';
 
 class LanguageCubit extends Cubit<Locale> {
-  LanguageCubit() : super(Locale(MapLocaleList.types.first.languageCode));
+  LanguageCubit() : super(Locale(MapLocaleList.types.first.languageCode)){
+    toSaveLocal();
+  }
 
   void changeLang() async {
     var lag = await CommonSharePreference.getString(
@@ -17,6 +19,15 @@ class LanguageCubit extends Cubit<Locale> {
       changeToJapanese();
     } else {
       changeToEnglish();
+    }
+  }
+  void toSaveLocal() async {
+    var lag = await CommonSharePreference.getString(
+        key: CommonSharePreference.selectedLanguage);
+    if (lag == MapLocaleList.types.first.languageCode) {
+      changeToEnglish();
+    } else {
+      changeToJapanese();
     }
   }
 
