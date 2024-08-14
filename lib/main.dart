@@ -1,11 +1,9 @@
-import 'package:bloc_implementation_rivaan/core/utils/common_share_preference.dart';
 import 'package:bloc_implementation_rivaan/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bloc_implementation_rivaan/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'core/common/app_string.dart';
 import 'core/common/cubits/lanuage/lanuage_cubit.dart';
 import 'core/constants/device_constants.dart';

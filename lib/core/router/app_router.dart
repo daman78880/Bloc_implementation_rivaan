@@ -7,12 +7,18 @@ import '../../features/auth/presentation/pages/splash_page.dart';
 import '../../features/home/presentation/page/home.dart';
 import '../common/cubits/app_user/app_user_cubit.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+// For use of navigator key use below function
+// navigatorKey.currentState?.pop();
+// if(navigatorKey.currentContext != null) GoRouter.of(navigatorKey.currentContext!).push(path);
+// OrientationBuilder for creating custom screen according to orientation of device.
 class AppRouter {
   static const String splash = '/';
   static const String login = '/LoginPage';
   static const String signUp = '/signUpPage';
   static const String home = '/HomePage';
   static final GoRouter router = GoRouter(
+    navigatorKey: navigatorKey,
     initialLocation: splash,
     errorBuilder: (context, state) {
       return const Scaffold(
